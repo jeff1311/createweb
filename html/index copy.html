@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        .navigator{
+            width:100%;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            color:#b7b7b7;
+            border:dashed 1px #b7b7b7;
+            position:relative;
+            overflow: hidden;
+        }
+        .banner{  
+            width:100%;
+            height:400px;
+            line-height: 400px;
+            text-align: center;
+            color:#b7b7b7;
+            border:dashed 1px #b7b7b7;
+            position: relative;
+            overflow: hidden;
+            /* transition: opacity 1s ease;
+            -moz-transition: opacity 1s ease;
+            -webkit-transition: opacity 1s ease;
+            -o-transition: opacity 1s ease; */
+        }
+        .fixed{
+            position: absolute;
+        }
+        .drag{
+            width:200px;
+            height:50px;
+            border:solid 1px #b7b7b7;
+            cursor: move;
+            position:absolute;
+            /* transition: opacity 1s ease;
+            -moz-transition: opacity 1s ease;
+            -webkit-transition: opacity 1s ease;
+            -o-transition: opacity 1s ease; */
+        }
+        .panel{
+            width:20px;
+            height:20px;
+            background-color: blue;
+            float: right;
+        }
+        .scale{
+            width:10px;
+            height:10px;
+            /* background-color:blue; */
+            overflow:hidden;
+            cursor: se-resize; 
+            position: absolute; 
+            right: 0; 
+            bottom: 0; 
+            border: dotted 1px #b7b7b7;
+        }
+        .menu{
+            top:0;
+            left:0;
+            width:300px;
+            height:100%;
+            z-index:100;
+            color:#586069;
+            background:#ffffff;
+            /* border:solid 1px #b7b7b7; */
+            translate:all 0.5;
+            position: absolute;
+            transform:translateX(-100%);
+            -ms-transform:translateX(-100%); 	/* IE 9 */
+            -moz-transform:translateX(-100%); 	/* Firefox */
+            -webkit-transform:translateX(-100%); /* Safari 和 Chrome */
+            -o-transform:translateX(-100%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            -moz-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            -o-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:0 0 10px #d8d8d8; 
+            -webkit-box-shadow:0 0 10px #d8d8d8;  
+            -moz-box-shadow:0 0 10px #d8d8d8;  
+        }
+        .menu-switch{
+            top:50%;
+            right:-33px;
+            width:30px;
+            height:30px;
+            position: absolute;
+            cursor: pointer;
+            background:#e7e7e7;
+            opacity:0.5;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            -moz-transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            -o-transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .menu title{
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            padding-left: 20px;
+            background: #fafbfc;
+        }
+        .menu ul{
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+        .menu li{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            cursor:pointer;
+            padding-left: 30px;
+            box-sizing: border-box;
+        }
+        .menu li:hover{
+            background: #fafbfc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+        <div id="menu-switch" class="menu-switch"></div>
+        <title class="menu-title">工具箱</title>
+        <ul>
+            <li>导航</li>
+            <li>轮播</li>
+            <li>表单</li>
+            <li>表格</li>
+            <li>日历</li>
+            <li>邮箱</li>
+            <li>窗口</li>
+            <li>图标</li>
+            <li>图片</li>
+            <li>上传</li>
+        </ul>
+    </div>
+
+    <div id="navigator" class="navigator drop"><span class="fixed">Navigator</span></div>
+    <div id="banner" class="banner drop"><span class="fixed">Banner</span></div>
+    <div id="drag" class="drag" draggable="true">
+
+        <div id="scale" class="scale"></div>
+
+    </div>
+    <div id="drag1" class="drag" draggable="true">
+
+        <div id="scale1" class="scale"></div>
+
+    </div>
+
+</body>
+<!-- <script src="/js/index.js"></script> -->
+<script>
+    document.getElementById('menu-switch').onclick = function(){
+        console.log(this.style);
+        if(this.parentNode.style.transform != 'translateX(0px)'){
+            this.parentNode.style.transform = 'translateX(0)';
+            this.style.opacity = '1';
+        }else{
+            this.parentNode.style.transform = 'translateX(-100%)';
+            this.style.opacity = '0.5';
+        }
+    }
+</script>
+<script>
+
+/* 拖动时触发*/
+document.addEventListener("dragstart", function(event) {
+    // console.log(event);
+    var target = document.getElementById(event.target.id);
+    var disX = event.x - target.offsetLeft;
+    var disY = event.y - target.offsetTop;
+    event.dataTransfer.setData("dragId",target.id);
+    event.dataTransfer.setData('disX',disX);
+    event.dataTransfer.setData('disY',disY);
+    //修改拖动元素的透明度
+    event.target.style.opacity = "0.3";
+});
+//在拖动某元素的同时,改变输出文本的颜色
+document.addEventListener("drag", function(event) {
+    
+});
+
+// 当拖完某元素输出一些文本元素和重置透明度
+document.addEventListener("dragend", function(event) {
+    event.target.style.opacity = "1";
+});
+
+/* 拖动进入某元素后触发 */
+document.addEventListener("dragenter", function(event) {
+    if ( event.target.className.indexOf("drop") != -1 ) {
+        event.target.style.borderColor = "blue";
+    }
+});
+
+// 默认情况下,数据/元素不能在其他元素中被拖放。对于drop我们必须防止元素的默认处理
+document.addEventListener("dragover", function(event) {
+    event.preventDefault();
+});
+
+// 当可拖放的某元素离开droptarget，重置div的边框样式
+document.addEventListener("dragleave", function(event) {
+    if ( event.target.className.indexOf("drop") != -1 ) {
+        event.target.style.border = "dashed 1px #b7b7b7";
+    }
+});
+
+//拖拽完成
+document.addEventListener("drop", function(event) {
+    event.preventDefault();
+    if ( event.target.className.indexOf("menu") == -1 ) {
+        console.log(event);
+        event.preventDefault();
+        var dragId = event.dataTransfer.getData("dragId");
+        var disX = event.dataTransfer.getData("disX");
+        var disY = event.dataTransfer.getData("disY");
+        var drag = document.getElementById(dragId);
+        drag.style.left = event.x - disX + 'px';
+        drag.style.top = (event.y - disY) < 0 ? 0 : (event.y - disY) + 'px';
+        event.target.appendChild(drag);
+        event.target.style.border = "dashed 1px #b7b7b7";
+    }
+});
+
+// document.addEventListener('mouseover',function(event){
+//     var target = event.target;
+//     if(target.className.indexOf('drag') != -1){
+//         console.log(event);
+//         target.style.borderColor = 'red';
+//         var html = '<div class="panel"></div>';
+//         target.innerHTML += html;
+//     }
+// })
+// document.addEventListener('mouseout',function(event){
+//     var target = event.target;
+//     if(target.className.indexOf('drag') != -1){
+//         console.log(event);
+//         target.style.borderColor = '#b7b7b7';
+//         target.innerHTML = '';
+//     }
+// })
+
+    //拖动放大
+    document.addEventListener('mousedown',function(event){
+        console.log('mousedown');
+        var target = event.target;
+        if(target.className.indexOf('scale') != -1){
+            // 阻止冒泡,避免缩放时触发移动事件
+            event.stopPropagation();
+            event.preventDefault();
+            var parent = event.target.parentNode;
+            var pos = {
+                'w': parent.offsetWidth,
+                'h': parent.offsetHeight,
+                'x': event.clientX,
+                'y': event.clientY
+            };
+            console.log(pos);
+            document.onmousemove = function (ev) {
+                console.log('parent.onmousemove');
+                ev.preventDefault();
+                // 设置图片的最小缩放为30*30
+                var w = Math.max(30, ev.clientX - pos.x + pos.w)
+                var h = Math.max(30, ev.clientY - pos.y + pos.h)
+                // console.log(w,h)
+
+                // 设置图片的最大宽高
+                w = w >= ev.offsetWidth - parent.offsetLeft ? ev.offsetWidth - parent.offsetLeft : w
+                h = h >= ev.offsetHeight - parent.offsetTop ? ev.offsetHeight - parent.offsetTop : h
+                parent.style.width = w + 'px';
+                parent.style.height = h + 'px';
+            }
+            document.onmouseleave = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+            document.onmouseup = function() {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            } 
+        }
+    })
+    // document.addEventListener('mousemove',function(event){
+    //     console.log('mousemove');
+    // })
+</script>
+</html>

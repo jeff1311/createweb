@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        .navigator{
+            width:100%;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            color:#b7b7b7;
+            border:dashed 1px #b7b7b7;
+            position:relative;
+            overflow: hidden;
+        }
+        .banner{  
+            width:100%;
+            height:400px;
+            line-height: 400px;
+            text-align: center;
+            color:#b7b7b7;
+            border:dashed 1px #b7b7b7;
+            position: relative;
+            overflow: hidden;
+        }
+        .fixed{
+            position: absolute;
+        }
+        .drag{
+            width:200px;
+            height:50px;
+            background: #b7b7b7;
+            cursor: move;
+            position:absolute;
+            top:100;
+            height:200;
+        }
+    </style>
+</head>
+<body id="body" ondragover="allowDrop(event)" ondrop="drop(event)" style="width:100%;height:1000px;">
+
+    <div id="navigator" class="navigator" ondragover="allowDrop(event)" ondrop="drop(event)"><span class="fixed">导航条</span></div>
+    <div id="banner" class="banner" ondragover="allowDrop(event)" ondrop="drop(event)"><span class="fixed">Banner</span></div>
+    <div id="drag" class="drag" draggable="true" ondrag="onDrag(event)" ondragstart="drag(event)"></div>
+
+</body>
+<!-- <script src="/js/index.js"></script> -->
+<script>
+    function drag(event){
+        // console.log(event);
+        var target = document.getElementById(event.target.id);
+        var disX = event.x - target.offsetLeft;
+        var disY = event.y - target.offsetTop;
+        event.dataTransfer.setData("dragId",target.id);
+        event.dataTransfer.setData('disX',disX);
+        event.dataTransfer.setData('disY',disY);
+    }
+    function drop(event){
+        console.log(event);
+        event.preventDefault();
+        var dragId = event.dataTransfer.getData("dragId");
+        var disX = event.dataTransfer.getData("disX");
+        var disY = event.dataTransfer.getData("disY");
+        console.log(disX);
+        console.log(disY);
+        var drag = document.getElementById(dragId);
+        drag.style.left = event.x - disX + 'px';
+        drag.style.top = (event.y - disY) < 0 ? 0 : (event.y - disY) + 'px';
+        event.target.appendChild(drag);
+        event.target.style.borderColor = "blue";
+    }
+    function allowDrop(event){
+        event.preventDefault();
+    }
+    function onDrag(event){
+        
+    }
+
+</script>
+</html>
