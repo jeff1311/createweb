@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>index</title>
     <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/icons/zondicons/style.css">
     <style>
         body{
             margin:0;
@@ -30,10 +31,6 @@
             border:dashed 1px #b7b7b7;
             position: relative;
             overflow: hidden;
-            /* transition: opacity 1s ease;
-            -moz-transition: opacity 1s ease;
-            -webkit-transition: opacity 1s ease;
-            -o-transition: opacity 1s ease; */
         }
         .fixed{
             position: absolute;
@@ -44,10 +41,6 @@
             border:solid 1px #b7b7b7;
             cursor: move;
             position:absolute;
-            /* transition: opacity 1s ease;
-            -moz-transition: opacity 1s ease;
-            -webkit-transition: opacity 1s ease;
-            -o-transition: opacity 1s ease; */
         }
         .scale{
             width:10px;
@@ -64,9 +57,8 @@
 </head>
 <body>
 
-    <div class="menu">
-        <div id="menu-switch" class="menu-switch"><img src="/images/open.png" alt=""></div>
-        <span class="menu-title">组件</span>
+    <aside class="menu">
+        <span id="menu-switch" class="icon-menu menu-switch"></span>
         <ul>
             <li>
                 <a>导航</a>
@@ -126,7 +118,7 @@
                 <a>上传</a>
             </li>
         </ul>
-    </div>
+    </aside>
 
     <div id="navigator" class="navigator drop"><span class="fixed">Navigator</span></div>
     <div id="banner" class="banner drop"><span class="fixed">Banner</span></div>
