@@ -1,0 +1,29 @@
+/* 结构伪类选择器 */
+li:first-child{
+    color: blue;
+}
+li:last-child{
+    color:green;
+}
+li:nth-child(even){/*偶数*/
+    color: red;
+}
+li:nth-child(odd){/*奇数*/
+    color: aliceblue;
+}
+li:nth-child(2n){
+    color: antiquewhite;
+}
+li:nth-last-child(even){/*从最后一个开始*/
+    color: aqua;
+}
+
+/* 目标伪类选择器 */
+:target{
+    color: aquamarine;
+}
+
+/* 首行缩进 */
+.first{
+    text-indent: 2em;
+}
