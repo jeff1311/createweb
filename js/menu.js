@@ -35,12 +35,13 @@ for(var i = 0;i < list.length;i ++){
                 menu.style.height = menu.children.length * 30 + 'px';
                 arrow.style.transform = 'rotate(180deg)';
                 var others = document.querySelectorAll('.menu > ul div');
-                var otherArrows = document.querySelectorAll('.menu a > span');
+                // var otherArrows = document.querySelectorAll('.menu a > span');
                 // console.log(list1);
                 for(var j = 0;j < others.length;j ++){
+                    // console.log(others[j].parentNode.children[0].children[0]);
                     if(others[j] != menu){
                         others[j].style.height = '0px';
-                        otherArrows[j].style.transform = 'rotate(0deg)';
+                        others[j].parentNode.children[0].children[0].style.transform = 'rotate(0deg)';
                     }
                 }   
             }
