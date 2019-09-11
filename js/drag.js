@@ -88,9 +88,14 @@ document.addEventListener('mousedown',function(event){
             parent.style.height = h + 'px';
         }
     }
-    if(target.id.indexOf('bar-drag') != -1){
+    if(target.id.indexOf('bar-drag') != -1 || target.id.indexOf('bar-icon') != -1){
         console.log(event);
-        var bar = event.target.parentNode.parentNode.parentNode;
+        var bar;
+        if(target.id.indexOf('bar-drag') != -1){
+            bar = event.target.parentNode.parentNode.parentNode;
+        }else{
+            bar = event.target.parentNode.parentNode.parentNode.parentNode;
+        }
         // console.log(event.x,bar.offsetLeft);
         // console.log(event.y,bar.offsetTop);
         var disX = event.x - bar.offsetLeft;
