@@ -6,8 +6,6 @@
     z-index:100;
     color:#586069;
     background:#ffffff;
-    /* border:solid 1px #b7b7b7; */
-    translate:all 0.5;
     position: fixed;
 	user-select:none;
 	-o-user-select:none;

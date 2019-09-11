@@ -53,6 +53,105 @@
             bottom: 0; 
             border: dotted 1px #b7b7b7;
         }
+        .bar{
+            margin: 300px;
+            padding:0px;
+            list-style: none;
+            font-size:xx-small;
+            display: inline-block;
+            box-shadow:0 0 10px #d8d8d8; 
+            -webkit-box-shadow:0 0 10px #d8d8d8;  
+            -moz-box-shadow:0 0 10px #d8d8d8;
+        }
+        .bar > li{
+            position: relative;
+            height:25px;
+        }
+        .bar > li > :nth-child(1){
+            float: left;
+            width:50px;
+            height:25px;
+            line-height: 25px;
+            text-align: center;
+            cursor: pointer;
+            user-select:none;
+            -o-user-select:none;
+            -moz-user-select:none;
+            -webkit-user-select:none;
+        }
+        .bar > li > div:nth-child(1):hover{
+            background:#f7f7f7;
+        }
+        .bar > li > div:nth-child(1):hover + div:nth-child(2){
+            width:100px;
+            background:#f7f7f7;
+        }
+        .bar > li > div:nth-child(2):hover{
+            width: 100px;
+            background:#f7f7f7;
+        }
+        .bar > li > div:nth-child(2):hover ~ div{
+            background:#f7f7f7;
+        }
+        .bar > li > :nth-child(2){
+            float: left;
+            overflow: hidden;
+            /* border:solid 1px gray; */
+            width: 0px;
+            height: 25px;
+            position: absolute;
+            left: 49px;
+            transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+            -o-transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+            -moz-transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:3px 0 10px #d8d8d8; 
+            -webkit-box-shadow:3px 0 10px #d8d8d8;  
+            -moz-box-shadow:3px 0 10px #d8d8d8;
+        }
+        
+        .panel{
+            margin: 100px;
+            font-size:xx-small;
+            display: inline-block;
+            box-shadow:0 0 10px #d8d8d8; 
+            -webkit-box-shadow:0 0 10px #d8d8d8;  
+            -moz-box-shadow:0 0 10px #d8d8d8;
+        }
+        .panel > ul{
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+        .panel > ul > li{
+            height:25px;
+            line-height: 25px;
+        }
+        .panel > ul > li > :nth-child(1){
+            width:65px;
+            text-align: right;
+            display: inline-block;
+        }
+        .panel > ul > li > :nth-child(2){
+            width:320px;
+            text-align: left;
+            display: inline-block;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        input[type="number"]{
+            -moz-appearance: textfield;
+        }
+        .panel input{
+            width:50px;
+            background:none;  
+            outline:none;  
+            border:none;
+            background: #ececec;
+            font-size: 1px;
+        }
     </style>
 </head>
 <body>
@@ -166,7 +265,7 @@
         </ul>
     </aside>
 
-    <div id="navigator" class="navigator drop"><span class="fixed">Navigator</span></div>
+    <!-- <div id="navigator" class="navigator drop"><span class="fixed">Navigator</span></div>
     <div id="banner" class="banner drop"><span class="fixed">Banner</span></div>
     <div id="drag" class="drag" draggable="true">
 
@@ -177,9 +276,152 @@
 
         <div id="scale1" class="scale"></div>
 
+    </div> -->
+
+
+    <ul class="bar">
+        <li>
+            <div class="bar-title">宽度</div>
+            <div class="bar-input">
+                asdfasdfasdfasdf
+            </div>
+        </li>
+        <li>
+            <div>高度</div>
+            <div>
+                asdfasdfasdfasdfasdfffffffffffffffffffffffffffff
+            </div>
+        </li>
+        <li>
+            <div>边框</div>
+            <div>
+                asdfasdfasdfasdf
+            </div>
+        </li>
+        <li>
+            <div>背景</div>
+            <div>
+                asdfasdfasdfasdf
+            </div>
+        </li>
+        <li>
+            <div>字体</div>
+            <div>
+                asdfasdfasdfasdf
+            </div>
+        </li>
+        <li>
+            <div>阴影</div>
+            <div>
+                asdfasdfasdfasdf
+            </div>
+        </li>
+        <li>
+            <div>指针</div>
+            <div>
+                asdfasdfasdfasdf
+            </div>
+        </li>
+        <li>
+            <div>透明度</div>
+            <div>
+                asdfasdfasdfasdf
+            </div>
+        </li>
+        <li>
+            <div>内边距</div>
+            <div>
+                asdfasdfasdfasdf
+            </div>
+        </li>
+        <li>
+            <div>外边距</div>
+            <div>
+                asdfasdfasdfasdf
+            </div>
+        </li>
+    </ul>
+
+
+    <div class="panel">
+        <ul>
+            <li>
+                <div>宽度：</div>
+                <div>
+                    <input type="number">
+                </div>
+            </li>
+            <li>
+                <div>高度：</div>
+                <div>
+                    <input type="number">
+                </div>
+            </li>
+            <li>
+                <div>边框：</div>
+                <div>
+                    粗：<input type="number">&nbsp;颜色：<input type="text">&nbsp;角：<input type="number" min="0" max="100">
+                </div>
+            </li>
+            <li>
+                <div>背景：</div>
+                <div>
+                    颜色：<input type="text">&nbsp;透明度：<input type="number">&nbsp;上传图片：<input type="file">
+                </div>
+            </li>
+            <li>
+                <div>字体：</div>
+                <div>
+                    尺寸：<input type="number">&nbsp;阴影：<input type="text">
+                </div>
+            </li>
+            <li>
+                <div>阴影：</div>
+                <div>
+                    <input type="text">
+                </div>
+            </li>
+            <li>
+                <div>指针：</div>
+                <select name="" id="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </li>
+            <li>
+                <div>透明度：</div>
+                <div>
+                    <input type="number">
+                </div>
+            </li>
+            <li>
+                <div>外边距：</div>
+                <div>
+                    <input type="number">
+                </div>
+            </li>
+            <li>
+                <div>内边距：</div>
+                <div>
+                    <input type="number">
+                </div>
+            </li>
+        </ul>
+
     </div>
 
 </body>
 <script src="/js/menu.js"></script>
 <script src="/js/drag.js"></script>
+<script>
+    
+</script>
 </html>
