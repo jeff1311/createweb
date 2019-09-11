@@ -54,60 +54,72 @@
             border: dotted 1px #b7b7b7;
         }
         .bar{
-            margin: 300px;
-            padding:0px;
             list-style: none;
             font-size:xx-small;
-            display: inline-block;
-            box-shadow:0 0 10px #d8d8d8; 
-            -webkit-box-shadow:0 0 10px #d8d8d8;  
-            -moz-box-shadow:0 0 10px #d8d8d8;
+            background: rgba(180,180,180,0.8);
+            position:absolute;
         }
-        .bar > li{
+        .bar > dd{
             position: relative;
-            height:25px;
-        }
-        .bar > li > :nth-child(1){
-            float: left;
             width:50px;
-            height:25px;
-            line-height: 25px;
-            text-align: center;
-            cursor: pointer;
+            height:30px;
+            margin: 0px;
+            padding: 0px;
             user-select:none;
             -o-user-select:none;
             -moz-user-select:none;
             -webkit-user-select:none;
         }
-        .bar > li > div:nth-child(1):hover{
-            background:#f7f7f7;
+        .bar > dt{
+            cursor: move;
+            width: 50px;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+            user-select:none;
+            -o-user-select:none;
+            -moz-user-select:none;
+            -webkit-user-select:none;
+            background: rgba(140,140,140,0.8);
         }
-        .bar > li > div:nth-child(1):hover + div:nth-child(2){
-            width:100px;
-            background:#f7f7f7;
-        }
-        .bar > li > div:nth-child(2):hover{
-            width: 100px;
-            background:#f7f7f7;
-        }
-        .bar > li > div:nth-child(2):hover ~ div{
-            background:#f7f7f7;
-        }
-        .bar > li > :nth-child(2){
-            float: left;
+        .bar > dd > div{
+            width: 50px;
+            height: 30px;
             overflow: hidden;
-            /* border:solid 1px gray; */
+            cursor: pointer;
+            position:absolute;
+            /* transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -o-transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -moz-transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+        }
+        .bar > dd > div:hover{
+            width:300px;
+            background: rgba(120,120,120,0.8);
+        }
+        .bar > dd > div > div:nth-child(1){
+            float: left;
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .bar > dd > div > div:nth-child(2){
+            float: left;
             width: 0px;
-            height: 25px;
-            position: absolute;
-            left: 49px;
-            transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-            -o-transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-            -moz-transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-            -webkit-transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow:3px 0 10px #d8d8d8; 
-            -webkit-box-shadow:3px 0 10px #d8d8d8;  
-            -moz-box-shadow:3px 0 10px #d8d8d8;
+            height: 30px;
+            line-height: 30px;
+            text-align: center; 
+        }
+        .bar input{
+            width:50px;
+            background:none;  
+            outline:none;  
+            border:none;
+            background: #ffffff;
+            font-size: 1px;
         }
         
         .panel{
@@ -279,68 +291,75 @@
     </div> -->
 
 
-    <ul class="bar">
-        <li>
-            <div class="bar-title">宽度</div>
-            <div class="bar-input">
-                asdfasdfasdfasdf
-            </div>
-        </li>
-        <li>
-            <div>高度</div>
+    <dl class="bar">
+        <dt>
             <div>
-                asdfasdfasdfasdfasdfffffffffffffffffffffffffffff
+                <div id="bar-drag">调式</div>
             </div>
-        </li>
-        <li>
-            <div>边框</div>
+        </dt>
+        <dd>
             <div>
-                asdfasdfasdfasdf
+                <div>宽度</div>
+                <div>
+                    <input type="text">
+                </div>
             </div>
-        </li>
-        <li>
-            <div>背景</div>
+        </dd>
+        <dd>
             <div>
-                asdfasdfasdfasdf
+                <div>高度</div>
+                <div>ajskdjfkjdkf</div>
             </div>
-        </li>
-        <li>
-            <div>字体</div>
+        </dd>
+        <dd>
             <div>
-                asdfasdfasdfasdf
+                <div>边框</div>
+                <div>ajskdjfkjdkf</div>
             </div>
-        </li>
-        <li>
-            <div>阴影</div>
+        </dd>
+        <dd>
             <div>
-                asdfasdfasdfasdf
+                <div>背景</div>
+                <div>ajskdjfkjdkf</div>
             </div>
-        </li>
-        <li>
-            <div>指针</div>
+        </dd>
+        <dd>
             <div>
-                asdfasdfasdfasdf
+                <div>字体</div>
+                <div>ajskdjfkjdkf</div>
             </div>
-        </li>
-        <li>
-            <div>透明度</div>
+        </dd>
+        <dd>
             <div>
-                asdfasdfasdfasdf
+                <div>阴影</div>
+                <div>ajskdjfkjdkf</div>
             </div>
-        </li>
-        <li>
-            <div>内边距</div>
+        </dd>
+        <dd>
             <div>
-                asdfasdfasdfasdf
+                <div>指针</div>
+                <div>ajskdjfkjdkf</div>
             </div>
-        </li>
-        <li>
-            <div>外边距</div>
+        </dd>
+        <dd>
             <div>
-                asdfasdfasdfasdf
+                <div>透明度</div>
+                <div>ajskdjfkjdkf</div>
             </div>
-        </li>
-    </ul>
+        </dd>
+        <dd>
+            <div>
+                <div>内边距</div>
+                <div>ajskdjfkjdkf</div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>外边距</div>
+                <div>ajskdjfkjdkf</div>
+            </div>
+        </dd>
+    </dl>
 
 
     <div class="panel">

@@ -56,28 +56,11 @@ document.addEventListener("drop", function(event) {
     }
 });
 
-// document.addEventListener('mouseover',function(event){
-//     var target = event.target;
-//     if(target.className.indexOf('drag') != -1){
-//         console.log(event);
-//         target.style.borderColor = 'red';
-//         var html = '<div class="panel"></div>';
-//         target.innerHTML += html;
-//     }
-// })
-// document.addEventListener('mouseout',function(event){
-//     var target = event.target;
-//     if(target.className.indexOf('drag') != -1){
-//         console.log(event);
-//         target.style.borderColor = '#b7b7b7';
-//         target.innerHTML = '';
-//     }
-// })
-
-//拖动放大
+//拖动、放大
 document.addEventListener('mousedown',function(event){
     console.log('mousedown');
     var target = event.target;
+    // console.log(event);
     if(target.className.indexOf('scale') != -1){
         // 阻止冒泡,避免缩放时触发移动事件
         event.stopPropagation();
@@ -104,16 +87,29 @@ document.addEventListener('mousedown',function(event){
             parent.style.width = w + 'px';
             parent.style.height = h + 'px';
         }
-        document.onmouseleave = function () {
-            document.onmousemove = null;
-            document.onmouseup = null;
-        }
-        document.onmouseup = function() {
-            document.onmousemove = null;
-            document.onmouseup = null;
-        } 
     }
+    if(target.id.indexOf('bar-drag') != -1){
+        console.log(event);
+        var bar = event.target.parentNode.parentNode.parentNode;
+        // console.log(event.x,bar.offsetLeft);
+        // console.log(event.y,bar.offsetTop);
+        var disX = event.x - bar.offsetLeft;
+        var disY = event.y - bar.offsetTop;
+        document.onmousemove = function (ev) {
+            // console.log(ev.x,disX);
+            // console.log(ev.y,disY)
+            ev.preventDefault();
+            bar.style.left = ev.x - disX + 'px';
+            bar.style.top = (ev.y - disY) < 0 ? 0 : (ev.y - disY) + 'px';
+            
+        }
+    }
+    document.onmouseleave = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+    }
+    document.onmouseup = function() {
+        document.onmousemove = null;
+        document.onmouseup = null;
+    } 
 })
-// document.addEventListener('mousemove',function(event){
-//     console.log('mousemove');
-// })
