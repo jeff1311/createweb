@@ -1,3 +1,4 @@
+/*menu*/
 .menu{
     top:0;
     left:0;
@@ -5,7 +6,7 @@
     height:100%;
     z-index:100;
     color:#586069;
-    background:#ffffff;
+    background:rgba(255,255,255,0.7);
     position: fixed;
 	user-select:none;
 	-o-user-select:none;
@@ -113,7 +114,7 @@
     -moz-transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     -o-transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background:#eaeaea;
+    background:rgba(220,220,220,0.7);;
     box-shadow:inset 5px 0px 10px 0px #d8d8d8; 
     -webkit-box-shadow:inset 5px 0px 10px 0px #d8d8d8;  
     -moz-box-shadow:inset 5px 0px 10px 0px #d8d8d8;  
@@ -128,4 +129,113 @@
 }
 .menu ul span:hover{
     background:#dcdcdc;
+}
+
+/*bar*/
+.bar{
+    list-style: none;
+    font-size:xx-small;
+    background: rgba(220,220,220,0.7);
+    position:absolute;
+}
+.bar > dd{
+    position: relative;
+    width:50px;
+    height:30px;
+    margin: 0px;
+    padding: 0px;
+    user-select:none;
+    -o-user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+}
+.bar > dt{
+    cursor: move;
+    width: 50px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+    user-select:none;
+    -o-user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    background: rgba(180,180,180,0.7);
+}
+.bar > dd > div{
+    width: 50px;
+    height: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    position:absolute;
+    /* transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -moz-transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+}
+.bar > dd:nth-child(2) > div:hover{
+    width:150px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(3) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(4) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(5) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(6) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(7) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(8) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(9) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(10) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+.bar > dd:nth-child(11) > div:hover{
+    width:300px;
+    background: rgba(200,200,200,0.7);
+}
+
+.bar > dd > div > div:nth-child(1){
+    float: left;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.bar > dd > div > div:nth-child(2){
+    float: left;
+    width: 0px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center; 
+    vertical-align:middle;
+}
+.bar input{
+    width:50px;
+    background:none;  
+    outline:none;  
+    border:none;
+    background: #ffffff;
+    font-size: 1px;
 }
