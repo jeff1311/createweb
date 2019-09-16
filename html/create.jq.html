@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>create</title>
+    <link rel="stylesheet" href="/css/create.jq.css">
+    <link rel="stylesheet" href="/icon/style.css">
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        .navigator{
+            width:100%;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            color:#b7b7b7;
+            border:dashed 1px #b7b7b7;
+            position:relative;
+            overflow: hidden;
+        }
+        .banner{  
+            width:100%;
+            height:400px;
+            line-height: 400px;
+            text-align: center;
+            color:#b7b7b7;
+            border:dashed 1px #b7b7b7;
+            position: relative;
+            overflow: hidden;
+        }
+        .fixed{
+            position: absolute;
+        }
+        .drag{
+            width:200px;
+            height:50px;
+            border:solid 1px #b7b7b7;
+            cursor: move;
+            position:absolute;
+        }
+        .scale{
+            width:10px;
+            height:10px;
+            /* background-color:blue; */
+            overflow:hidden;
+            cursor: se-resize; 
+            position: absolute; 
+            right: 0; 
+            bottom: 0; 
+            border: dotted 1px #b7b7b7;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <aside class="menu">
+        <!-- <span class="icon-th"></span> -->
+        <span id="menu-close" class="icon-close"></span>
+        <span id="menu-switch" class="icon-bars menu-switch"></span>
+        <ul>
+            <li>
+                <a>导航<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                    <span>03</span>
+                    <span>04</span>
+                    <span>05</span>
+                    <span>06</span>
+                    <span>07</span>
+                </div>
+            </li>
+            <li>
+                <a>轮播<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                    <span>03</span>
+                    <span>04</span>
+                </div>
+            </li>
+            <li>
+                <a>表单<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                    <span>03</span>
+                    <span>04</span>
+                    <span>05</span>
+                    <span>06</span>
+                    <span>07</span>
+                    <span>08</span>
+                    <span>09</span>
+                    <span>10</span>
+                </div>
+            </li>
+            <li>
+                <a>表格<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                </div>
+            </li>
+            <li>
+                <a>日历<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                </div>
+            </li>
+            <li>
+                <a>按钮<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                    <span>03</span>
+                    <span>04</span>
+                    <span>05</span>
+                    <span>06</span>
+                    <span>07</span>
+                </div>
+            </li>
+            <li>
+                <a>窗口<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                    <span>03</span>
+                    <span>04</span>
+                    <span>05</span>
+                </div>
+            </li>
+            <li>
+                <a>图标<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                    <span>03</span>
+                    <span>04</span>
+                </div>
+            </li>
+            <li>
+                <a>图片<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                    <span>03</span>
+                </div>
+            </li>
+            <li>
+                <a>上传<span class="icon-angle-up"></span></a>
+                <div>
+                    <span>01</span>
+                    <span>02</span>
+                    <span>03</span>
+                    <span>04</span>
+                    <span>05</span>
+                    <span>06</span>
+                    <span>07</span>
+                    <span>08</span>
+                </div>
+            </li>
+        </ul>
+    </aside>
+
+    <div id="navigator" class="navigator drop"><span class="fixed">Navigator</span></div>
+    <div id="banner" class="banner drop"><span class="fixed">Banner</span></div>
+    <div id="drag" class="drag" draggable="true">
+
+        <div id="scale" class="scale"></div>
+
+    </div>
+    <div id="drag1" class="drag" draggable="true">
+
+        <div id="scale1" class="scale"></div>
+
+    </div>
+
+
+    <dl class="bar">
+        <dt>
+            <div>
+                <div id="bar-drag">
+                    <span id="bar-icon" class="icon-sliders"></span>
+                </div>
+            </div>
+        </dt>
+        <dd>
+            <div>
+                <div>宽度</div>
+                <div>
+                    <input type="number" placeholder="宽度">
+                    <!-- <input type="text"> -->
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>高度</div>
+                <div>
+                    <input type="number" placeholder="高度">
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>边框</div>
+                <div>
+                    <input type="text" placeholder="颜色">
+                    <span class="split-line"></span> 
+                    <input type="number" placeholder="厚度">
+                    <span class="split-line"></span> 
+                    <input type="number" placeholder="圆角" min="0" max="100">
+                    <input type="range" placeholder="圆角" min="0" max="100">
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>背景</div>
+                <div>
+                    <input type="text" placeholder="颜色">
+                    <span class="split-line"></span> 
+                    <input type="number" placeholder="透明度">
+                    <input type="range" placeholder="透明度" min="0" max="100">
+                    <span class="split-line"></span> 
+                    <span class="icon-image"></span>
+                    <!-- <input type="file" style="display: none;"> -->
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>字体</div>
+                <div>
+                    <input type="number" placeholder="尺寸">
+                    <span class="split-line"></span> 
+                    <input type="number" placeholder="阴影">
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>阴影</div>
+                <div>
+                    <input type="number" placeholder="阴影">
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>指针</div>
+                <div>
+                    <input type="number" placeholder="指针">
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>透明度</div>
+                <div>
+                    <input type="number" placeholder="透明度">
+                    <input type="range" placeholder="透明度" min="0" max="100">
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>内边距</div>
+                <div>
+                    <input type="number" placeholder="内边距">
+                </div>
+            </div>
+        </dd>
+        <dd>
+            <div>
+                <div>外边距</div>
+                <div>
+                    <input type="number" placeholder="外边距">
+                </div>
+            </div>
+        </dd>
+    </dl>
+
+</body>
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/create.js"></script>
+<script>
+
+    $(function(){
+        var top = $(window).height() / 2 - $('.bar').height() / 2;
+        $('.bar').css({
+            display:'block',
+            top:top + 'px',
+            right:'30px'
+        })
+    });
+
+    //bar hover event
+    $('.bar > dd > div').hover(function(ev){
+        // console.log(ev);
+        // console.log($(this.children[1].children[0]).width());
+        var width = 0;
+        $(this.children[1].children).each(function(){
+            width += $(this).outerWidth(true);
+        });
+        width = width > 0 ? width + 20 : 0;
+        console.log(width);
+        var x = this.parentNode.parentNode.offsetLeft;
+        var offsetX = $(window).width() - x;
+        var left = offsetX >= (width + 50) ? '50' : '-' + width;
+        var bc = 'rgba(200,200,200,0.7)';
+        $(this).css({
+            background:bc
+        });
+        $(this.children[1]).css({
+            left:left + 'px',
+            width:width + 'px',
+            background:bc
+        });
+    },function(ev){
+        $(this).css({background:''});
+        $(this.children[1]).css({
+            width:'0px',
+            background:''
+        });
+    });
+</script>
+</html>

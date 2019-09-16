@@ -159,7 +159,7 @@ document.addEventListener('mousedown',function(event){
             ev.preventDefault();
             bar.style.left = ev.x - disX + 'px';
             bar.style.top = (ev.y - disY) <= 0 ? 0 - 12 : (ev.y - disY - 12) + 'px';
-            
+            bar.style.right = '';
         }
     }
     document.onmouseleave = function () {
