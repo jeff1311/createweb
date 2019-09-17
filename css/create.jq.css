@@ -133,6 +133,7 @@
 
 /*bar*/
 .bar{
+    z-index: 99;
     display: none;
     list-style: none;
     font-size:xx-small;
