@@ -53,7 +53,18 @@
             bottom: 0; 
             border: dotted 1px #b7b7b7;
         }
-        
+        .color{
+            width: 154px !important;
+        } 
+        .cp-color-picker{
+            border-radius: 0px !important;
+            background: rgba(200,200,200,0.7) !important;
+            margin-top: 6px;
+            margin-left: -6px;
+            box-shadow: 0px 0px 5px 0px #d8d8d8; 
+            -webkit-box-shadow: 0px 0px 5px 0px #d8d8d8;  
+            -moz-box-shadow: 0px 0px 5px 0px #d8d8d8; 
+        }
     </style>
 </head>
 <body>
@@ -193,7 +204,7 @@
             <div>
                 <div>宽度</div>
                 <div>
-                    <input type="number" placeholder="宽度">
+                    <input type="number" placeholder="宽度" title="宽度">
                     <!-- <input type="text"> -->
                 </div>
             </div>
@@ -202,7 +213,7 @@
             <div>
                 <div>高度</div>
                 <div>
-                    <input type="number" placeholder="高度">
+                    <input type="number" placeholder="高度" title="高度">
                 </div>
             </div>
         </dd>
@@ -210,12 +221,13 @@
             <div>
                 <div>边框</div>
                 <div>
-                    <input type="text" placeholder="颜色">
+                    <input class="color" id="color" value="#FFFFFF" title="颜色">
+                    <!-- <input type="text" placeholder="颜色" title="颜色"> -->
                     <span class="split-line"></span> 
-                    <input type="number" placeholder="厚度">
+                    <input type="number" placeholder="厚度" title="厚度">
                     <span class="split-line"></span> 
-                    <input type="number" placeholder="圆角" min="0" max="100">
-                    <input type="range" placeholder="圆角" min="0" max="100">
+                    <input type="number" placeholder="圆角" min="0" max="100" title="圆角" id="border-radius">
+                    <input type="range" min="0" max="100" value="0" title="圆角" id="border-radius-r">
                 </div>
             </div>
         </dd>
@@ -223,12 +235,13 @@
             <div>
                 <div>背景</div>
                 <div>
-                    <input type="text" placeholder="颜色">
+                    <input class="color" value="#FFFFFF" title="颜色">
+                    <!-- <input type="text" placeholder="颜色" title="颜色"> -->
                     <span class="split-line"></span> 
-                    <input type="number" placeholder="透明度">
-                    <input type="range" placeholder="透明度" min="0" max="100">
+                    <input type="number" placeholder="透明度" title="透明度" id="background-opacity">
+                    <input type="range" min="0" max="100" value="0" title="透明度" id="background-opacity-r">
                     <span class="split-line"></span> 
-                    <span class="icon-image"></span>
+                    <span class="icon-image" title="图片"></span>
                     <!-- <input type="file" style="display: none;"> -->
                 </div>
             </div>
@@ -237,9 +250,9 @@
             <div>
                 <div>字体</div>
                 <div>
-                    <input type="number" placeholder="尺寸">
+                    <input type="number" placeholder="尺寸" title="尺寸">
                     <span class="split-line"></span> 
-                    <input type="number" placeholder="阴影">
+                    <input type="number" placeholder="阴影" title="阴影">
                 </div>
             </div>
         </dd>
@@ -247,7 +260,7 @@
             <div>
                 <div>阴影</div>
                 <div>
-                    <input type="number" placeholder="阴影">
+                    <input type="number" placeholder="阴影" title="阴影">
                 </div>
             </div>
         </dd>
@@ -255,7 +268,7 @@
             <div>
                 <div>指针</div>
                 <div>
-                    <input type="number" placeholder="指针">
+                    <input type="number" placeholder="指针" title="指针">
                 </div>
             </div>
         </dd>
@@ -263,8 +276,8 @@
             <div>
                 <div>透明度</div>
                 <div>
-                    <input type="number" placeholder="透明度">
-                    <input type="range" placeholder="透明度" min="0" max="100">
+                    <input type="number" placeholder="透明度" title="透明度" id="opacity">
+                    <input type="range" min="0" max="100" value="0" title="透明度" id="opacity-r">
                 </div>
             </div>
         </dd>
@@ -272,7 +285,7 @@
             <div>
                 <div>内边距</div>
                 <div>
-                    <input type="number" placeholder="内边距">
+                    <input type="number" placeholder="内边距" title="内边距">
                 </div>
             </div>
         </dd>
@@ -280,7 +293,7 @@
             <div>
                 <div>外边距</div>
                 <div>
-                    <input type="number" placeholder="外边距">
+                    <input type="number" placeholder="外边距" title="外边距">
                 </div>
             </div>
         </dd>
@@ -289,8 +302,13 @@
 </body>
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/js/create.js"></script>
+<script src="/js/jqColorPicker.min.js"></script>
 <script>
 
+
+    $('.color').colorPicker();
+
+    //initialize bar's location
     $(function(){
         var top = $(window).height() / 2 - $('.bar').height() / 2;
         $('.bar').css({
@@ -329,5 +347,30 @@
             background:''
         });
     });
+
+    //border-radius change event
+    $('#border-radius-r').on('input propertychange',function(){
+        $('#border-radius').val(this.value);    
+    });
+    $('#border-radius').on('input propertychange',function(){
+        $('#border-radius-r').val(this.value);
+    });
+
+    //background-opacity change event
+    $('#background-opacity-r').on('input propertychange',function(){
+        $('#background-opacity').val(this.value);    
+    });
+    $('#background-opacity').on('input propertychange',function(){
+        $('#background-opacity-r').val(this.value);
+    });
+
+    //opacity change event
+    $('#opacity-r').on('input propertychange',function(){
+        $('#opacity').val(this.value);    
+    });
+    $('#opacity').on('input propertychange',function(){
+        $('#opacity-r').val(this.value);
+    });
+
 </script>
 </html>
