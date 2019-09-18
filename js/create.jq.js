@@ -65,7 +65,10 @@ document.addEventListener("dragstart", function(event) {
 });
 //在拖动某元素的同时,改变输出文本的颜色
 document.addEventListener("drag", function(event) {
-    
+    // console.log(event);
+    if(event.target.className.indexOf('obj') == -1){
+        event.target.style.cursor = 'no-drop';
+    }
 });
 
 // 当拖完某元素输出一些文本元素和重置透明度
@@ -94,17 +97,32 @@ document.addEventListener("dragleave", function(event) {
 
 //拖拽完成
 document.addEventListener("drop", function(event) {
+    console.log(event);
     event.preventDefault();
-    if ( event.target.className.indexOf("menu") == -1 ) {
+    if ( event.target.className.indexOf("obj") != -1 ) {
         console.log(event);
         event.preventDefault();
         var dragId = event.dataTransfer.getData("dragId");
         var disX = event.dataTransfer.getData("disX");
         var disY = event.dataTransfer.getData("disY");
         var drag = document.getElementById(dragId);
-        drag.style.left = event.x - disX + 'px';
-        drag.style.top = (event.y - disY) < 0 ? 0 : (event.y - disY) + 'px';
-        event.target.appendChild(drag);
+        // var left = (event.x - disX) < 0 ? 0 : (event.x - disX);
+        // var top = (event.y - disY) < 0 ? 0 : (event.y - disY);
+        var left = event.x - disX;
+        var top = event.y - disY;
+        // left = (left + drag.offsetWidth) > (event.target.offsetLeft + event.target.offsetWidth) ? (event.target.offsetLeft + event.target.offsetWidth - drag.offsetWidth - Number($(event.target).css('border-width').replace('px',''))) : left;
+        // left = left < event.target.offsetLeft ? event.target.offsetLeft : left;
+        drag.style.left = left + 'px';
+        drag.style.top = top + 'px';
+        drag.style.right = '';
+        drag.style.bottom = '';
+        // console.log(drag.offsetWidth);
+        // console.log(event.target.style.borderWidth);
+        // console.log(event.target.offsetLeft);
+        // console.log(event.target.offsetWidth);
+        if(drag.parentNode != event.target){
+            event.target.appendChild(drag);
+        }
         event.target.style.border = "dashed 1px #b7b7b7";
     }
 });
@@ -215,10 +233,40 @@ function getStyle(_this){
         $('#width').val(width.replace('px',''));
         $('#height').val(height.replace('px',''));
         $('#border-color').val(borderColor);
+        $('#border-color').colorPicker({
+            color: borderColor,
+            customBG: borderColor,
+            renderCallback: function(elm, toggled) {
+                console.log(elm.text);
+                if(elm.text != null && elm.text != ''){
+                    $(_that).css(colorType,elm.text);
+                }
+            }
+        });
         $('#border-width').val(borderWidth.replace('px',''));
         $('#border-radius').val(borderRadius.replace('px',''));
         $('#background-color').val(bgColor);
+        $('#background-color').colorPicker({
+            color: bgColor,
+            customBG: bgColor,
+            renderCallback: function(elm, toggled) {
+                console.log(elm.text);
+                if(elm.text != null && elm.text != ''){
+                    $(_that).css(colorType,elm.text);
+                }
+            }
+        });
         $('#font-color').val(fontColor.replace('px',''));
+        $('#font-color').colorPicker({
+            color: fontColor,
+            customBG: fontColor,
+            renderCallback: function(elm, toggled) {
+                console.log(elm.text);
+                if(elm.text != null && elm.text != ''){
+                    $(_that).css(colorType,elm.text);
+                }
+            }
+        });
         $('#font-size').val(fontSize.replace('px',''));
 
         // console.log(_this.offsetTop);
@@ -243,14 +291,14 @@ $(function(){
         right:'30px'
     })
     //color panel
-    $('.color').colorPicker({
-       renderCallback: function($elm, toggled) {
-           console.log($elm.text);
-           if($elm.text != null && $elm.text != ''){
-               $(_that).css(colorType + '-color',$elm.text);
-           }
-       }
-    });
+    // $('.color').colorPicker({
+    //    renderCallback: function(elm, toggled) {
+    //        console.log(elm.text);
+    //        if(elm.text != null && elm.text != ''){
+    //            $(_that).css(colorType + '-color',elm.text);
+    //        }
+    //    }
+    // });
 });
 
 //bar hover event
@@ -261,7 +309,7 @@ $('.bar > dd > div').hover(function(ev){
     $(this.children[1].children).each(function(){
         if($(this).css('display') != 'none'){
             width += $(this).outerWidth(true);
-            // console.log(this);
+            // console.log($(this).css('width'));
             // console.log($(this).outerWidth(true));
         }
     });
@@ -287,6 +335,30 @@ $('.bar > dd > div').hover(function(ev){
     });
 });
 
+//position change event
+$('#position-top').click(function(){
+    $(_that).css({top:0,bottom:''});  
+});
+$('#position-bottom').click(function(){
+    // var p = $(_that.parentNode).innerHeight() - $(_that).outerHeight(); 
+    $(_that).css({top:'',bottom:0});  
+});
+$('#position-center-hor').click(function(){
+    // var p = $(_that.parentNode).innerWidth() / 2 - $(_that).outerWidth() / 2; 
+    $(_that).css({left:0,right:0});  
+});
+$('#position-center-ver').click(function(){
+    // var p = $(_that.parentNode).innerHeight() / 2 - $(_that).outerHeight() / 2; 
+    $(_that).css({top:0,bottom:0});  
+});
+$('#position-left').click(function(){
+    $(_that).css({'left':0,right:''});  
+});
+$('#position-right').click(function(){
+    // var p = $(_that.parentNode).innerWidth() - $(_that).outerWidth(); 
+    $(_that).css({'left':'',right:0});  
+});
+
 //width change event
 $('#width').on('input propertychange',function(){
     $(_that).css('width',this.value + 'px');  
@@ -300,22 +372,28 @@ $('#width-100').on('click',function(){
 $('#height').on('input propertychange',function(){
     $(_that).css('height',this.value + 'px');  
 });
+$('#height-100').on('click',function(){
+    // $(_that).css({top:0,'height':$(_that).parent().innerHeight() - Number($(_that).css('border-width').replace('px','')) * 2});
+    // $('#height').val($(_that).css('height').replace('px',''));
+    $(_that).css({top:0,'height':'100%'});
+    $('#height').val($(_that).css('height').replace('px',''));
+});
 
 //border-color change event
 $('#border-color').on('click',function(){
-    colorType = 'border';
+    colorType = 'border-color';
 });
 //background-color change event
 $('#background-color').on('click',function(){
-    colorType = 'background';
+    colorType = 'background-color';
 });
 //font-color change event
 $('#font-color').on('click',function(){
-    colorType = 'font';
+    colorType = 'color';
 });
 //shadow-color change event
 $('#shadow-color').on('click',function(){
-    colorType = 'shadow';
+    colorType = 'shadow-asdfaskjdfkasdkfjahksdfh';
 });
 
 //border-width change event
@@ -326,6 +404,15 @@ $('#border-width').on('input propertychange',function(){
 //border-radius change event
 $('#border-radius').on('input propertychange',function(){
     $(_that).css('border-radius',this.value + 'px');
+});
+
+//font-size change event
+$('#font-size').on('input propertychange',function(){
+    $(_that).css('font-size',this.value + 'px');
+});
+//text-align-center event
+$('#text-align-center').click(function(){
+    $(_that).css('text-align','center');
 });
 
 //background-opacity change event

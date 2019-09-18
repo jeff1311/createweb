@@ -183,7 +183,7 @@
     <div id="banner" class="banner drop"><span class="fixed">Banner</span></div> -->
 
     <div id="drag" class="obj drag" draggable="true">
-
+        看加了空间的附属卡是ASDFASDF
         <div id="scale" class="scale"></div>
 
     </div>
@@ -204,18 +204,26 @@
         </dt>
         <dd>
             <div>
-                <div>宽度</div>
+                <div>位置</div>
                 <div>
-                    <input type="number" placeholder="宽度" title="宽度" id="width">
-                    <button id="width-100">100%</button>
+                    <button id="position-top">置顶</button>
+                    <button id="position-bottom">置底</button>
+                    <button id="position-center-hor">水平居中</button>
+                    <button id="position-center-ver">垂直居中</button>
+                    <button id="position-left">置左</button>
+                    <button id="position-right">置右</button>
                 </div>
             </div>
         </dd>
         <dd>
             <div>
-                <div>高度</div>
+                <div>尺寸</div>
                 <div>
+                    <input type="number" placeholder="宽度" title="宽度" id="width">
+                    <button id="width-100" title="宽度100%">100%</button>
+                    <span class="split-line"></span> 
                     <input type="number" placeholder="高度" title="高度" id="height">
+                    <button id="height-100" title="高度100%">100%</button>
                 </div>
             </div>
         </dd>
@@ -227,7 +235,7 @@
                     <span class="split-line"></span> 
                     <input type="number" placeholder="厚度" title="厚度" id="border-width">
                     <span class="split-line"></span> 
-                    <input type="number" placeholder="圆角" min="0" max="100" title="圆角" id="border-radius">
+                    <input type="number" placeholder="圆角" min="0" title="圆角" id="border-radius">
                 </div>
             </div>
         </dd>
@@ -252,6 +260,8 @@
                     <input class="color" title="颜色" id="font-color">
                     <span class="split-line"></span> 
                     <input type="number" placeholder="尺寸" title="尺寸" id="font-size">
+                    <span class="split-line"></span> 
+                    <button id="text-align-center">水平居中</button>
                     <span class="split-line"></span> 
                     <input type="text" placeholder="阴影" title="阴影" id="font-shadow">
                 </div>

@@ -192,7 +192,7 @@
     text-align: center;
 }
 .bar > dd > div > div:nth-child(2){
-    float: left;
+    /* float: left; */
     width: 0px;
     height: 30px;
     line-height: 30px;
@@ -200,6 +200,7 @@
     vertical-align:middle;
     position: absolute;
     overflow: hidden;
+    cursor: default;
     /* transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     -o-transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     -moz-transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -218,6 +219,29 @@
     background: #ffffff;
     font-size: 1px;
     text-align:center;
+    vertical-align: 1px;
+    /* border-radius: 2px; */
+}
+.bar button{
+    width: 60px;
+    height:17px;
+    line-height: 17px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border:none;
+    /* border-radius: 2px; */
+    outline: none;
+    cursor: pointer;
+    background:white;
+    font-size: smaller;
+    vertical-align: 1px;
+    box-shadow: 0px 0px 5px 0px #d8d8d8; 
+    -webkit-box-shadow: 0px 0px 5px 0px gray;  
+    -moz-box-shadow: 0px 0px 5px 0px #d8d8d8; 
+}
+.bar button:hover{
+    background: #a2a2a2;
+    color: white;
 }
 .bar dd [class^=icon-]{
     margin-left: 5px;
@@ -260,5 +284,15 @@ input[type=range]::-webkit-slider-thumb {
     width: 1px;
     height: 10px; 
     background: darkgray;
-    vertical-align: -1px;
+    /* vertical-align: 0px; */
+}
+
+
+.obj{
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow: hidden;
 }
