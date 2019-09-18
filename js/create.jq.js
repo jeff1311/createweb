@@ -114,8 +114,8 @@ document.addEventListener("drop", function(event) {
         // left = left < event.target.offsetLeft ? event.target.offsetLeft : left;
         drag.style.left = left + 'px';
         drag.style.top = top + 'px';
-        drag.style.right = '';
-        drag.style.bottom = '';
+        drag.style.right = 'auto';
+        drag.style.bottom = 'auto';
         // console.log(drag.offsetWidth);
         // console.log(event.target.style.borderWidth);
         // console.log(event.target.offsetLeft);
@@ -177,8 +177,9 @@ document.addEventListener('mousedown',function(event){
             // console.log(ev.y,disY)
             ev.preventDefault();
             bar.style.left = ev.x - disX + 'px';
-            bar.style.top = (ev.y - disY) <= 0 ? 0 - 12 : (ev.y - disY - 12) + 'px';
-            bar.style.right = '';
+            bar.style.top = (ev.y - disY) <= 0 ? 0 : (ev.y - disY) + 'px';
+            bar.style.right = 'auto';
+            bar.style.bottom = 'auto';
         }
     }
     document.onmouseleave = function () {
@@ -238,8 +239,14 @@ function getStyle(_this){
             customBG: borderColor,
             renderCallback: function(elm, toggled) {
                 console.log(elm.text);
-                if(elm.text != null && elm.text != ''){
-                    $(_that).css(colorType,elm.text);
+                if(toggled == true){
+                    
+                }else if(toggled == false){
+                    
+                }else{
+                    if(elm.text != null && elm.text != ''){
+                        $(_that).css(colorType,elm.text);
+                    }
                 }
             }
         });
@@ -250,9 +257,17 @@ function getStyle(_this){
             color: bgColor,
             customBG: bgColor,
             renderCallback: function(elm, toggled) {
-                console.log(elm.text);
-                if(elm.text != null && elm.text != ''){
-                    $(_that).css(colorType,elm.text);
+                // console.log(elm);
+                // console.log(toggled);
+                // console.log(elm.text);
+                if(toggled == true){
+                    
+                }else if(toggled == false){
+                    
+                }else{
+                    if(elm.text != null && elm.text != ''){
+                        $(_that).css(colorType,elm.text);
+                    }
                 }
             }
         });
@@ -262,8 +277,14 @@ function getStyle(_this){
             customBG: fontColor,
             renderCallback: function(elm, toggled) {
                 console.log(elm.text);
-                if(elm.text != null && elm.text != ''){
-                    $(_that).css(colorType,elm.text);
+                if(toggled == true){
+                    
+                }else if(toggled == false){
+                    
+                }else{
+                    if(elm.text != null && elm.text != ''){
+                        $(_that).css(colorType,elm.text);
+                    }
                 }
             }
         });
@@ -303,18 +324,13 @@ $(function(){
 
 //bar hover event
 $('.bar > dd > div').hover(function(ev){
-    // console.log(ev);
-    // console.log($(this.children[1].children[0]).width());
     var width = 0;
     $(this.children[1].children).each(function(){
         if($(this).css('display') != 'none'){
             width += $(this).outerWidth(true);
-            // console.log($(this).css('width'));
-            // console.log($(this).outerWidth(true));
         }
     });
     width = width > 0 ? width + 30 : 0;
-    // console.log(width);
     var x = this.parentNode.parentNode.offsetLeft;
     var offsetX = $(window).width() - x;
     var left = offsetX >= (width + 50) ? '50' : '-' + width;
@@ -414,14 +430,24 @@ $('#font-size').on('input propertychange',function(){
 $('#text-align-center').click(function(){
     $(_that).css('text-align','center');
 });
-
-//background-opacity change event
-// $('#background-opacity-r').on('input propertychange',function(){
-//     $('#background-opacity').val(this.value);    
-// });
-// $('#background-opacity').on('input propertychange',function(){
-//     $('#background-opacity-r').val(this.value);
-// });
+//text-pos-hor event
+$('#text-pos-hor').on('input propertychange',function(){
+    console.log(this.checked);
+    if(this.checked){
+        $(_that).css('text-align','center');
+    }else{
+        $(_that).css('text-align','');
+    }
+});
+//text-pos-ver event
+$('#text-pos-ver').on('input propertychange',function(){
+    console.log(this.checked);
+    if(this.checked){
+        $(_that).css('line-height',$(_that).height() + 'px');
+    }else{
+        $(_that).css('line-height','');
+    }
+});
 
 //opacity change event
 $('#opacity-r').on('input propertychange',function(){

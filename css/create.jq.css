@@ -133,6 +133,14 @@
 
 /*bar*/
 .bar{
+    margin:0;
+    /* margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    top:0;
+    right:0;
+    bottom:0; */
     z-index: 99;
     display: none;
     list-style: none;
@@ -242,6 +250,15 @@
 .bar button:hover{
     background: #a2a2a2;
     color: white;
+}
+.bar input[type=checkbox]{
+    width: auto;
+    vertical-align: -2px;
+}
+.box{
+    width: 80px;
+    margin-left:5px;
+    margin-right:5px;
 }
 .bar dd [class^=icon-]{
     margin-left: 5px;
