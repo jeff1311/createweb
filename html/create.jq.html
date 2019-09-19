@@ -57,7 +57,7 @@
             width: 154px !important;
         } 
         .cp-color-picker{
-            z-index: 98;
+            z-index: 99;
             border-radius: 0px !important;
             background: rgba(200,200,200,0.7) !important;
             margin-top: 6px;
@@ -183,12 +183,12 @@
     <div id="banner" class="banner drop"><span class="fixed">Banner</span></div> -->
 
     <div id="drag" class="obj drag" draggable="true">
-        看加了空间的附属卡是ASDFASDF
+        
         <div id="scale" class="scale"></div>
 
     </div>
     <div id="drag1" class="obj drag" draggable="true">
-
+        <span>看加了空间的附属卡是ASDFASDF</span>
         <div id="scale1" class="scale"></div>
 
     </div>
@@ -231,7 +231,7 @@
             <div>
                 <div>边框</div>
                 <div>
-                    <input class="color" title="颜色" id="border-color">
+                    <input class="color" placeholder="颜色" title="颜色" id="border-color">
                     <span class="split-line"></span> 
                     <input type="number" placeholder="厚度" title="厚度" id="border-width">
                     <span class="split-line"></span> 
@@ -243,7 +243,7 @@
             <div>
                 <div>背景</div>
                 <div>
-                    <input class="color" title="颜色" id="background-color">
+                    <input class="color" placeholder="颜色" title="颜色" id="background-color">
                     <span class="split-line"></span> 
                     <!-- <input type="number" placeholder="透明度" title="透明度" id="background-opacity">
                     <input type="range" min="0" max="100" value="0" title="透明度" id="background-opacity-r">
@@ -257,20 +257,26 @@
             <div>
                 <div>字体</div>
                 <div>
-                    <input class="color" title="颜色" id="font-color">
-                    <span class="split-line"></span> 
-                    <input type="number" placeholder="尺寸" title="尺寸" id="font-size">
-                    <span class="split-line"></span> 
-                    <!-- <button id="text-align-center">水平居中</button> -->
-                    <span class="box">
-                        水平居中<input type="checkbox" id="text-pos-hor">
-                    </span>
-                    <span class="split-line"></span> 
-                    <span class="box">
-                        垂直居中<input type="checkbox" id="text-pos-ver">
-                    </span>
-                    <span class="split-line"></span> 
-                    <input type="text" placeholder="阴影" title="阴影" id="font-shadow">
+                    <div style="width:405px;height:60px;">
+                        <input class="color" placeholder="颜色" title="颜色" id="font-color">
+                        <span class="split-line"></span> 
+                        <input type="number" placeholder="尺寸" title="尺寸" id="font-size">
+                        <span class="split-line"></span> 
+                        <span class="box">
+                            水平居中<input type="checkbox" id="text-pos-hor">
+                        </span>
+                        <span class="split-line"></span> 
+                        <button id="text-pos-ver">垂直居中</button>
+                        <!-- <span class="split-line"></span>  -->
+                        <br>
+                        阴影
+                        <input class="color" placeholder="阴影颜色" title="阴影颜色" id="text-shadow-color">
+                        <input type="number" placeholder="X" title="X" id="text-shadow-x">
+                        <!-- <input type="range" value="0" title="X" id="text-shadow-x-r"> -->
+                        <input type="number" placeholder="Y" title="Y" id="text-shadow-y">
+                        <!-- <input type="range" value="0" title="Y" id="text-shadow-y-r"> -->
+                        <input type="number" placeholder="尺寸" title="尺寸" id="text-shadow-size">
+                    </div>
                 </div>
             </div>
         </dd>
@@ -278,7 +284,7 @@
             <div>
                 <div>阴影</div>
                 <div>
-                    <input class="color" title="颜色">
+                    <input class="color" placeholder="颜色" title="颜色">
                     <span class="split-line"></span> 
                     <input type="number" placeholder="X" title="X">
                     <input type="range" min="0" max="100" value="0" title="X" id="box-shadow-x-r">

@@ -74,7 +74,7 @@
     padding: 0px;
     margin: 0px;
     margin-top: 2.5em;
-    font-size: 15px;
+    font-size: smaller;
 }
 .menu li{
     width: 100%;
@@ -92,7 +92,6 @@
     line-height: 30px;
 }
 .menu a > span{
-    font-size: 15px;
     right: 10px;
     position: absolute;
     line-height: 30px;
@@ -134,16 +133,10 @@
 /*bar*/
 .bar{
     margin:0;
-    /* margin-left:auto;
-    margin-right:auto;
-    margin-top:auto;
-    margin-bottom:auto;
-    top:0;
-    right:0;
-    bottom:0; */
-    z-index: 99;
+    z-index: 98;
     display: none;
     list-style: none;
+    color: #586069;
     font-size:xx-small;
     background: rgba(255,255,255,0.7);
     position:fixed;
@@ -202,7 +195,7 @@
 .bar > dd > div > div:nth-child(2){
     /* float: left; */
     width: 0px;
-    height: 30px;
+    /* height: 30px; */
     line-height: 30px;
     text-align: center; 
     vertical-align:middle;
@@ -224,6 +217,7 @@
     background:none;  
     outline:none;  
     border:none;
+    color: #586069;
     background: #ffffff;
     font-size: 1px;
     text-align:center;
@@ -241,6 +235,7 @@
     outline: none;
     cursor: pointer;
     background:white;
+    color: #586069;
     font-size: smaller;
     vertical-align: 1px;
     box-shadow: 0px 0px 5px 0px #d8d8d8; 
@@ -312,4 +307,8 @@ input[type=range]::-webkit-slider-thumb {
     margin-top: auto;
     margin-bottom: auto;
     overflow: hidden;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position-x: center;
+    background-position-y: center;
 }
