@@ -272,21 +272,21 @@ function setStyle(_this){
         if(fontShadow != 'none'){
             var fontShadowX;
             var fontShadowY;
-            var fontShadowSize;
+            var fontShadowBlur;
             var lastIndex = fontShadow.lastIndexOf(')');
             fontShadowColor = fontShadow.substring(0,lastIndex + 1);
             var fontShadowParam = fontShadow.substring(lastIndex + 2).split(' ');
             fontShadowX = fontShadowParam[0];
             fontShadowY = fontShadowParam[1];
-            fontShadowSize = fontShadowParam[2];
-            console.log(fontShadowSize);
+            fontShadowBlur = fontShadowParam[2];
+            console.log(fontShadowBlur);
             $('#text-shadow-x').val(fontShadowX.replace('px',''));
             // $('#text-shadow-x-r').val(fontShadowX.replace('px',''));
             $('#text-shadow-y').val(fontShadowY.replace('px',''));
             // $('#text-shadow-y-r').val(fontShadowY.replace('px',''));
-            $('#text-shadow-size').val(fontShadowSize.replace('px',''));
+            $('#text-shadow-blur').val(fontShadowBlur.replace('px',''));
         }else{
-            fontShadowColor = null;
+            fontShadowColor = 'rgb(255,255,255)';
             $('#text-shadow-x').val(null);
             // $('#text-shadow-x-r').val(fontShadowX.replace('px',''));
             $('#text-shadow-y').val(null);
@@ -306,25 +306,26 @@ function setStyle(_this){
                     
                 }else{
                     if(elm.text != null && elm.text != ''){
-                        var fontShadow = $(_that).css('text-shadow');
+                        var shadow = $(_that).css('text-shadow');
+                        console.log(shadow);
                         var value;
-                        var fontShadowSize;
-                        if(fontShadow != 'none'){
-                            var lastIndex = fontShadow.lastIndexOf(')');
-                            // var fontShadowColor = fontShadow.substring(0,lastIndex + 1);
-                            var fontShadowParam = fontShadow.substring(lastIndex + 2).split(' ');
-                            var fontShadowX = fontShadowParam[0];
-                            var fontShadowY = fontShadowParam[1];
-                            fontShadowSize = fontShadowParam[2];
-                            value = fontShadowX + ' ' + fontShadowY + ' ' + fontShadowSize + ' ' + elm.text;
+                        var blurRadius;
+                        if(shadow != 'none'){
+                            var index = shadow.lastIndexOf(')');
+                            // var color = fontShadow.substring(0,index + 1);
+                            var param = shadow.substring(index + 2).split(' ');
+                            var x = param[0];
+                            var y = param[1];
+                            blurRadius = param[2];
+                            value = x + ' ' + y + ' ' + blurRadius + ' ' + elm.text;
                         }else{
-                            fontShadowSize = '3px';
+                            blurRadius = '3px';
                             value = '0px 0px 3px ' + elm.text; 
                         }
                         // console.log(fontShadowSize);
-                        // console.log(value);
+                        console.log(value);
                         $(_this).css('text-shadow',value);
-                        $('#text-shadow-size').val(fontShadowSize.replace('px',''));
+                        $('#text-shadow-size').val(blurRadius.replace('px',''));
                     }
                 }
             }
@@ -341,6 +342,75 @@ function setStyle(_this){
 
         var boxShadow = $(_this).css('box-shadow');
         console.log('box-shadow:' + boxShadow);
+        var boxShadowColor;
+        if(boxShadow != 'none'){
+            var boxShadowX;
+            var boxShadowY;
+            var boxShadowBlur;
+            var boxShadowDiff;
+            var lastIndex2 = boxShadow.lastIndexOf(')');
+            boxShadowColor = boxShadow.substring(0,lastIndex2 + 1);
+            var boxShadowParam = boxShadow.substring(lastIndex2 + 2).split(' ');
+            boxShadowX = boxShadowParam[0];
+            boxShadowY = boxShadowParam[1];
+            boxShadowBlur = boxShadowParam[2];
+            boxShadowDiff = boxShadowParam[3];
+            console.log(boxShadowBlur);
+            $('#box-shadow-x').val(boxShadowX.replace('px',''));
+            $('#box-shadow-x-r').val(boxShadowX.replace('px',''));
+            $('#box-shadow-y').val(boxShadowY.replace('px',''));
+            $('#box-shadow-y-r').val(boxShadowY.replace('px',''));
+            $('#box-shadow-blur').val(boxShadowBlur.replace('px',''));
+            $('#box-shadow-diff').val(boxShadowDiff.replace('px',''));
+        }else{
+            boxShadowColor = 'rgb(255,255,255)';
+            $('#box-shadow-x').val(null);
+            $('#box-shadow-x-r').val(0);
+            $('#box-shadow-y').val(null);
+            $('#box-shadow-y-r').val(0);
+            $('#box-shadow-blur').val(null);
+            $('#box-shadow-diff').val(null);
+        }
+        $('#box-shadow-color').val(boxShadowColor);
+        $('#box-shadow-color').colorPicker({
+            color: boxShadowColor,
+            customBG: boxShadowColor,
+            renderCallback: function(elm, toggled) {
+                console.log(elm.text);
+                if(toggled == true){
+                    
+                }else if(toggled == false){
+                    
+                }else{
+                    if(elm.text != null && elm.text != ''){
+                        var shadow = $(_that).css('box-shadow');
+                        var value;
+                        var blurRadius;
+                        var diffRadius;
+                        if(shadow != 'none'){
+                            var index = shadow.lastIndexOf(')');
+                            // var color = boxShadow.substring(0,index + 1);
+                            var param = shadow.substring(index + 2).split(' ');
+                            var x = param[0];
+                            var y = param[1];
+                            blurRadius = param[2];
+                            diffRadius = param[3];
+                            value = x + ' ' + y + ' ' + blurRadius + ' ' + diffRadius + ' ' + elm.text;
+                        }else{
+                            blurRadius = '3px';
+                            diffRadius = '0px';
+                            value = '0px 0px 3px 0px ' + elm.text; 
+                        }
+                        // console.log(blurRadius);
+                        // console.log(diffRadius);
+                        // console.log(value);
+                        $(_this).css('box-shadow',value);
+                        $('#box-shadow-blur').val(blurRadius.replace('px',''));
+                        $('#box-shadow-diff').val(diffRadius.replace('px',''));
+                    }
+                }
+            }
+        });
         
 
         var cursor = $(_this).css('cursor');
@@ -410,26 +480,26 @@ $('.bar > dd > div').hover(function(ev){
 
 //position change event
 $('#position-top').click(function(){
-    $(_that).css({top:0,bottom:''});  
+    $(_that).css({'top':'0','bottom':''});  
 });
 $('#position-bottom').click(function(){
     // var p = $(_that.parentNode).innerHeight() - $(_that).outerHeight(); 
-    $(_that).css({top:'',bottom:0});  
+    $(_that).css({'top':'','bottom':'0'});  
 });
 $('#position-center-hor').click(function(){
     // var p = $(_that.parentNode).innerWidth() / 2 - $(_that).outerWidth() / 2; 
-    $(_that).css({left:0,right:0});  
+    $(_that).css({'left':'0','right':'0','margin-left':'auto','margin-right':'auto'});  
 });
 $('#position-center-ver').click(function(){
     // var p = $(_that.parentNode).innerHeight() / 2 - $(_that).outerHeight() / 2; 
-    $(_that).css({top:0,bottom:0});  
+    $(_that).css({'top':'0','bottom':'0','margin-top':'auto','margin-bottom':'auto'});  
 });
 $('#position-left').click(function(){
-    $(_that).css({'left':0,right:''});  
+    $(_that).css({'left':'0','right':''});  
 });
 $('#position-right').click(function(){
     // var p = $(_that.parentNode).innerWidth() - $(_that).outerWidth(); 
-    $(_that).css({'left':'',right:0});  
+    $(_that).css({'left':'','right':'0'});  
 });
 
 //width change event
@@ -492,81 +562,110 @@ $('#text-pos-ver').click(function(){
 //text-shadow change event
 // $('#text-shadow-x-r').on('input propertychange',function(){
 //     $('#text-shadow-x').val(this.value);
-//     var fontShadow = $(_that).css('text-shadow');
-//     var lastIndex = fontShadow.lastIndexOf(')');
-//     var fontShadowColor = fontShadow.substring(0,lastIndex + 1);
-//     var fontShadowParam = fontShadow.substring(lastIndex + 2).split(' ');
-//     var fontShadowX = fontShadowParam[0];
-//     var fontShadowY = fontShadowParam[1];
-//     var fontShadowSize = fontShadowParam[2];
-//     var value = this.value + 'px ' + fontShadowY + ' ' + fontShadowSize + ' ' + fontShadowColor;
-//     console.log(value);
-//     $(_that).css('text-shadow',value);    
+//     setShadow('text-shadow','x',this);    
 // });
 $('#text-shadow-x').on('input propertychange',function(){
-    $('#text-shadow-x-r').val(this.value);
-    var fontShadow = $(_that).css('text-shadow');
-    var lastIndex = fontShadow.lastIndexOf(')');
-    var fontShadowColor = fontShadow.substring(0,lastIndex + 1);
-    var fontShadowParam = fontShadow.substring(lastIndex + 2).split(' ');
-    var fontShadowX = fontShadowParam[0];
-    var fontShadowY = fontShadowParam[1];
-    var fontShadowSize = fontShadowParam[2];
-    var value = this.value + 'px ' + fontShadowY + ' ' + fontShadowSize + ' ' + fontShadowColor;
-    console.log(value);
-    $(_that).css('text-shadow',value);    
+    // $('#text-shadow-x-r').val(this.value);
+    setShadow('text-shadow','x',this);   
 });
 // $('#text-shadow-y-r').on('input propertychange',function(){
 //     $('#text-shadow-y').val(this.value); 
-//     var fontShadow = $(_that).css('text-shadow');
-//     var lastIndex = fontShadow.lastIndexOf(')');
-//     var fontShadowColor = fontShadow.substring(0,lastIndex + 1);
-//     var fontShadowParam = fontShadow.substring(lastIndex + 2).split(' ');
-//     var fontShadowX = fontShadowParam[0];
-//     var fontShadowY = fontShadowParam[1];
-//     var fontShadowSize = fontShadowParam[2];
-//     var value =  fontShadowX + ' ' + this.value + 'px ' + fontShadowSize + ' ' + fontShadowColor;
-//     console.log(value);
-//     $(_that).css('text-shadow',value);      
+//     setShadow('text-shadow','y',this);
 // });
 $('#text-shadow-y').on('input propertychange',function(){
-    $('#text-shadow-y-r').val(this.value);
-    var fontShadow = $(_that).css('text-shadow');
-    var lastIndex = fontShadow.lastIndexOf(')');
-    var fontShadowColor = fontShadow.substring(0,lastIndex + 1);
-    var fontShadowParam = fontShadow.substring(lastIndex + 2).split(' ');
-    var fontShadowX = fontShadowParam[0];
-    var fontShadowY = fontShadowParam[1];
-    var fontShadowSize = fontShadowParam[2];
-    var value =  fontShadowX + ' ' + this.value + 'px ' + fontShadowSize + ' ' + fontShadowColor;
-    console.log(value);
-    $(_that).css('text-shadow',value);
+    // $('#text-shadow-y-r').val(this.value);
+    setShadow('text-shadow','y',this);
 });
-$('#text-shadow-size').on('input propertychange',function(){
-    var fontShadow = $(_that).css('text-shadow');
-    var lastIndex = fontShadow.lastIndexOf(')');
-    var fontShadowColor = fontShadow.substring(0,lastIndex + 1);
-    var fontShadowParam = fontShadow.substring(lastIndex + 2).split(' ');
-    var fontShadowX = fontShadowParam[0];
-    var fontShadowY = fontShadowParam[1];
-    var fontShadowSize = fontShadowParam[2];
-    var value =  fontShadowX + ' ' + fontShadowY + ' ' + this.value + 'px ' + fontShadowColor;
-    console.log(value);
-    $(_that).css('text-shadow',value);
+$('#text-shadow-blur').on('input propertychange',function(){
+    setShadow('text-shadow','blurRadius',this);
 });
 
+//box-shadow change event
+$('#box-shadow-x-r').on('input propertychange',function(){
+    $('#box-shadow-x').val(this.value);
+    setShadow('box-shadow','x',this);    
+});
+$('#box-shadow-x').on('input propertychange',function(){
+    $('#box-shadow-x-r').val(this.value);
+    setShadow('box-shadow','x',this);   
+});
+$('#box-shadow-y-r').on('input propertychange',function(){
+    $('#box-shadow-y').val(this.value);
+    setShadow('box-shadow','y',this);    
+});
+$('#box-shadow-y').on('input propertychange',function(){
+    $('#box-shadow-y-r').val(this.value);
+    setShadow('box-shadow','y',this);   
+});
+$('#box-shadow-blur').on('input propertychange',function(){
+    setShadow('box-shadow','blurRadius',this);
+});
+$('#box-shadow-diff').on('input propertychange',function(){
+    setShadow('box-shadow','diffRadius',this);
+});
+
+function setShadow(attrType,valueType,_this){
+    var shadow = $(_that).css(attrType);
+    console.log(shadow);
+    var index = shadow.lastIndexOf(')');
+    var color = shadow.substring(0,index + 1);
+    var params = shadow.substring(index + 2).split(' ');
+    var x = params[0];
+    var y = params[1];
+    var blurRadius = params[2];
+    var value;
+    if(attrType == 'text-shadow'){
+        if(valueType == 'x'){//x轴偏移量
+            value =  _this.value + 'px ' + y + ' ' + blurRadius + ' ' + color;
+        }else if(valueType == 'y'){//y轴偏移量
+            value =  x + ' ' + _this.value + 'px ' + blurRadius + ' ' + color;
+        }else if(valueType == 'blurRadius'){//模糊半径
+            value =  x + ' ' + y + ' ' + _this.value + 'px ' + color;
+        }
+    }else if(attrType == 'box-shadow'){
+        var diffRadius = params[3];
+        if(valueType == 'x'){//x轴偏移量
+            value =  _this.value + 'px ' + y + ' ' + blurRadius + ' ' + diffRadius + ' ' + color;
+        }else if(valueType == 'y'){//y轴偏移量
+            value =  x + ' ' + _this.value + 'px ' + blurRadius + ' ' + diffRadius + ' ' + color;
+        }else if(valueType == 'blurRadius'){//模糊半径
+            value =  x + ' ' + y + ' ' + _this.value + 'px ' + diffRadius + ' ' + color;
+        }else if(valueType == 'diffRadius'){//扩散半径
+            value =  x + ' ' + y + ' ' + blurRadius + ' ' + _this.value + 'px ' + color;
+        }
+    }
+    console.log(value);
+    $(_that).css(attrType,value);
+}
+
+//cursor change event
+$('#cursor').on('input propertychange',function(){
+    $(_that).css('cursor',this.value);    
+});
 
 //opacity change event
 $('#opacity-r').on('input propertychange',function(){
-    $('#opacity').val(this.value);    
+    $('#opacity').val(this.value);
+    $(_that).css('opacity',this.value);    
 });
 $('#opacity').on('input propertychange',function(){
     $('#opacity-r').val(this.value);
+    $(_that).css('opacity',this.value);
 });
 
 //image upload event
 $('#background-img-upload').click(function(){
     $('#background-img').click();
+});
+
+//padding change event
+$('#padding').on('input propertychange',function(){
+    $(_that).css('padding',this.value + 'px');    
+});
+
+//margin change event
+$('#margin').on('input propertychange',function(){
+    $(_that).css('margin',this.value + 'px');    
 });
 
 //原生JS版上传图片预览

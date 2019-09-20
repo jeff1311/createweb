@@ -188,7 +188,7 @@
 
     </div>
     <div id="drag1" class="obj drag" draggable="true">
-        <span>看加了空间的附属卡是ASDFASDF</span>
+        <span>云之彼端·约定的地方</span>
         <div id="scale1" class="scale"></div>
 
     </div>
@@ -272,10 +272,10 @@
                         阴影
                         <input class="color" placeholder="阴影颜色" title="阴影颜色" id="text-shadow-color">
                         <input type="number" placeholder="X" title="X" id="text-shadow-x">
-                        <!-- <input type="range" value="0" title="X" id="text-shadow-x-r"> -->
+                        <!-- <input type="range" min="-10" max="10" value="0" title="X" id="text-shadow-x-r"> -->
                         <input type="number" placeholder="Y" title="Y" id="text-shadow-y">
-                        <!-- <input type="range" value="0" title="Y" id="text-shadow-y-r"> -->
-                        <input type="number" placeholder="尺寸" title="尺寸" id="text-shadow-size">
+                        <!-- <input type="range" min="-10" max="10" value="0" title="Y" id="text-shadow-y-r"> -->
+                        <input type="number" placeholder="模糊" title="模糊" id="text-shadow-blur">
                     </div>
                 </div>
             </div>
@@ -284,15 +284,17 @@
             <div>
                 <div>阴影</div>
                 <div>
-                    <input class="color" placeholder="颜色" title="颜色">
+                    <input class="color" placeholder="颜色" title="颜色" id="box-shadow-color">
                     <span class="split-line"></span> 
-                    <input type="number" placeholder="X" title="X">
-                    <input type="range" min="0" max="100" value="0" title="X" id="box-shadow-x-r">
+                    <input type="number" placeholder="X" title="X" id="box-shadow-x">
+                    <input type="range" min="-10" max="10" value="0" title="X" id="box-shadow-x-r">
                     <span class="split-line"></span> 
-                    <input type="number" placeholder="Y" title="Y">
-                    <input type="range" min="0" max="100" value="0" title="Y" id="box-shadow-y-r">
+                    <input type="number" placeholder="Y" title="Y" id="box-shadow-y">
+                    <input type="range" min="-10" max="10" value="0" title="Y" id="box-shadow-y-r">
                     <span class="split-line"></span> 
-                    <input type="number" placeholder="尺寸" title="尺寸">
+                    <input type="number" placeholder="模糊" title="模糊" id="box-shadow-blur">
+                    <span class="split-line"></span> 
+                    <input type="number" placeholder="扩散" title="扩散" id="box-shadow-diff">
                 </div>
             </div>
         </dd>
@@ -301,16 +303,26 @@
                 <div>指针</div>
                 <div>
                     <select name="指针" id="cursor" title="指针">
-                        <option value="">箭头</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
+                        <option value="default">default</option>
+                        <option value="auto">auto</option>
+                        <option value="none">none</option>
+                        <option value="url">url</option>
+                        <option value="move">move</option>
+                        <option value="text">text</option>
+                        <option value="wait">wait</option>
+                        <option value="help">help</option>
+                        <option value="no-drop">not-drop</option>
+                        <option value="not-allowed">not-allowed</option>
+                        <option value="crosshair">crosshair</option>
+                        <option value="pointer">pointer</option>
+                        <option value="e-resize">e-resize</option>
+                        <option value="ne-resize">ne-resize</option>
+                        <option value="nw-resize">nw-resize</option>
+                        <option value="n-resize">n-resize</option>
+                        <option value="se-resize">se-resize</option>
+                        <option value="sw-resize">sw-resize</option>
+                        <option value="s-resize">s-resize</option>
+                        <option value="w-resize">w-resize</option>
                     </select>
                 </div>
             </div>
@@ -319,8 +331,8 @@
             <div>
                 <div>透明度</div>
                 <div>
-                    <input type="number" placeholder="透明度" title="透明度" id="opacity">
-                    <input type="range" min="0" max="100" value="0" title="透明度" id="opacity-r">
+                    <input type="number" min="0" max="1" placeholder="透明度" title="透明度" id="opacity">
+                    <input type="range" min="0" max="1" step="0.1" value="0" title="透明度" id="opacity-r">
                 </div>
             </div>
         </dd>
@@ -328,7 +340,7 @@
             <div>
                 <div>内边距</div>
                 <div>
-                    <input type="number" placeholder="内边距" title="内边距">
+                    <input type="number" placeholder="内边距" title="内边距" id="padding">
                 </div>
             </div>
         </dd>
@@ -336,7 +348,7 @@
             <div>
                 <div>外边距</div>
                 <div>
-                    <input type="number" placeholder="外边距" title="外边距">
+                    <input type="number" placeholder="外边距" title="外边距" id="margin">
                 </div>
             </div>
         </dd>
