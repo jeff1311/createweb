@@ -95,8 +95,7 @@ document.addEventListener("dragleave", function(event) {
 document.addEventListener("drop", function(event) {
     console.log(event);
     event.preventDefault();
-    if ( event.target.className.indexOf("obj") != -1 ) {
-        console.log(event);
+    if ( event.target.className.indexOf("obj") != -1 || event.target.tagName == 'HTML') {
         event.preventDefault();
         var dragId = event.dataTransfer.getData("dragId");
         var disX = event.dataTransfer.getData("disX");
@@ -108,7 +107,11 @@ document.addEventListener("drop", function(event) {
         drag.style.top = top + 'px';
         drag.style.right = 'auto';
         drag.style.bottom = 'auto';
-        if(drag.parentNode != event.target){
+        console.log(drag.parentNode != event.target);
+        console.log(drag != event.target);
+        if(drag.parentNode != event.target && drag != event.target){
+            drag.style.left = '0px';
+            drag.style.top = '0px';
             event.target.appendChild(drag);
         }
         // event.target.style.border = "dashed 1px #b7b7b7";
@@ -681,3 +684,14 @@ document.getElementById('background-img').onchange = function(){
         // document.getElementById('md5').innerText = '';
     }
 }
+
+var ids = new Array();
+$('#box-new').click(function(){
+    var id = ids[ids.length - 1] == undefined ? 1 : ids[ids.length - 1] + 1;
+    ids.push(id);
+    console.log(id);
+    var html = ['<div id="drag' + id + '" class="obj drag" draggable="true">  ',
+                '    <div id="scale" class="scale"></div>',
+                '</div>'].join("");
+    $('#container').append(html);
+});
