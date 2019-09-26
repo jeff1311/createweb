@@ -225,7 +225,7 @@
     /* border-radius: 2px; */
 }
 .bar button{
-    width: 60px;
+    width: 62px;
     height:17px;
     line-height: 17px;
     margin-left: 5px;
@@ -316,7 +316,14 @@ input[type=range]::-webkit-slider-thumb {
     background: darkgray;
     /* vertical-align: 0px; */
 }
-
+.split-line-2{
+    float: left;
+    width: 1px;
+    height: 80px;
+    background: darkgray;
+    margin-top: 5px;
+    margin-right: 10px;
+}
 
 .obj{
     margin: 0;

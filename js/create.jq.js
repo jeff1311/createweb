@@ -114,6 +114,7 @@ document.addEventListener("drop", function(event) {
             drag.style.top = '0px';
             event.target.appendChild(drag);
         }
+        setPosition(drag);
         // event.target.style.border = "dashed 1px #b7b7b7";
     }
 });
@@ -183,13 +184,27 @@ document.addEventListener('mousedown',function(event){
     } 
 })
 
-
-
+//set position
+function setPosition(_this){
+    var top = $(_this).css('top');
+    console.log('top:' + top);
+    var left = $(_this).css('left');
+    console.log('left:' + left);
+    var right = $(_this).css('right');
+    console.log('right:' + right);
+    var bottom = $(_this).css('bottom');
+    console.log('bottom:' + bottom);
+    $('#top').val(top.replace('px',''));
+    $('#left').val(left.replace('px',''));
+    $('#right').val(right.replace('px',''));
+    $('#bottom').val(bottom.replace('px',''));
+}
 //set element style
 function setStyle(_this){
     if(_this.className.indexOf('obj') != -1){
         _that = _this;
         console.log(_this);
+        setPosition(_this);
         var width = $(_this).css('width');
         console.log('width:' + width);
         $('#width').val(width.replace('px',''));
@@ -482,27 +497,45 @@ $('.bar > dd > div').hover(function(ev){
 });
 
 //position change event
+$('#top').on('input propertychange',function(){
+    $(_that).css('top',this.value + 'px');  
+});
+$('#left').on('input propertychange',function(){
+    $(_that).css('left',this.value + 'px');  
+});
+$('#right').on('input propertychange',function(){
+    $(_that).css('right',this.value + 'px');  
+});
+$('#bottom').on('input propertychange',function(){
+    $(_that).css('bottom',this.value + 'px');  
+});
 $('#position-top').click(function(){
     $(_that).css({'top':'0','bottom':''});  
+    setPosition(_that);
 });
 $('#position-bottom').click(function(){
     // var p = $(_that.parentNode).innerHeight() - $(_that).outerHeight(); 
     $(_that).css({'top':'','bottom':'0'});  
+    setPosition(_that);
 });
 $('#position-center-hor').click(function(){
     // var p = $(_that.parentNode).innerWidth() / 2 - $(_that).outerWidth() / 2; 
     $(_that).css({'left':'0','right':'0','margin-left':'auto','margin-right':'auto'});  
+    setPosition(_that);
 });
 $('#position-center-ver').click(function(){
     // var p = $(_that.parentNode).innerHeight() / 2 - $(_that).outerHeight() / 2; 
     $(_that).css({'top':'0','bottom':'0','margin-top':'auto','margin-bottom':'auto'});  
+    setPosition(_that);
 });
 $('#position-left').click(function(){
     $(_that).css({'left':'0','right':''});  
+    setPosition(_that);
 });
 $('#position-right').click(function(){
     // var p = $(_that.parentNode).innerWidth() - $(_that).outerWidth(); 
     $(_that).css({'left':'','right':'0'});  
+    setPosition(_that);
 });
 
 //width change event
