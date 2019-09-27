@@ -107,9 +107,10 @@ document.addEventListener("drop", function(event) {
         drag.style.top = top + 'px';
         drag.style.right = 'auto';
         drag.style.bottom = 'auto';
-        console.log(drag.parentNode != event.target);
-        console.log(drag != event.target);
-        if(drag.parentNode != event.target && drag != event.target){
+        // console.log(drag.parentNode != event.target);
+        // console.log(drag != event.target);
+        // console.log($(drag).find('.obj'));
+        if(drag.parentNode != event.target && drag != event.target && checkChildren(event.target,$(drag).find('.obj'))){
             drag.style.left = '0px';
             drag.style.top = '0px';
             event.target.appendChild(drag);
@@ -118,6 +119,16 @@ document.addEventListener("drop", function(event) {
         // event.target.style.border = "dashed 1px #b7b7b7";
     }
 });
+
+//检查目标是否是当前拖拽对象的后代元素
+function checkChildren(target,children){
+    for(var i = 0;i < children.length;i ++){
+        if(target == children[i]){
+            return false;
+        }
+    }
+    return true;
+}
 
 //拖动、放大
 document.addEventListener('mousedown',function(event){
@@ -727,4 +738,7 @@ $('#box-new').click(function(){
                 '    <div id="scale" class="scale"></div>',
                 '</div>'].join("");
     $('#container').append(html);
+    // var top = $(window).height() / 2 - $('#drag' + id).height() / 2;
+    // var left = $(window).width() / 2 - $('#drag' + id).width() / 2;
+    $('#drag' + id).animate({top:0,left:0,right:0,bottom:0},100);
 });
