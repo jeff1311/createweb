@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="/css/photoswipe/default-skin/default-skin.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .gallery{
+            position: relative;
+            margin: 10px;
+        }
+        .gallery-a{
+            position:absolute;
+            /* display: grid; */
+            cursor:pointer;
+            box-shadow: 0px 0px 5px 0px #d8d8d8; 
+            -webkit-box-shadow: 0px 0px 5px 0px gray;  
+            -moz-box-shadow: 0px 0px 5px 0px #d8d8d8; 
+        }
+        .gallery-img{
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="gallery" id="gallery">
+        <a class="gallery-a" href="/images/xyl/xyl1.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl1.jpg" />
+            <figure style="display:none;">你柔美的微笑，抵得过这整座城市的喧响。</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl2.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl2.jpg" />
+            <figure style="display:none;">在街边咖啡厅落座，点上一根烟，微微眯上眼睛，就能回到海浪拍击的那块甲板上。从二十岁，到四十岁，到六十岁，一直不变的，都是对那片海洋的向往。 摄于温哥华，LEICA MP + 50MM</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl3.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl3.jpg" />
+            <figure style="display:none;">我需要这么胖是因为我有一颗要找到世界尽头的心。  Leica M9 + 50 f0.95。</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl4.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl4.jpg" />
+            <figure style="display:none;">这么多年了，该走的都走了，该留的也都留下来了，一切都变了，又一切都没变。</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl5.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl5.jpg" />
+            <figure style="display:none;">生命的广阔不上天下海怎么能看到。</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl6.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl6.jpg" />
+            <figure style="display:none;">306/365 11月2日 我在世界的尽头等你，漫长的仿佛过了一个世纪，但玫瑰花它依然娇艳，在告诉我你就在不远的未来。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl7.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl7.jpg" />
+            <figure style="display:none;">307/365 11月3日 至少还有你。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl8.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl8.jpg" />
+            <figure style="display:none;">300/365 10月27日 秋风萧瑟，来到熟悉的站台，所有的唠叨和担忧再说一遍。火车轰鸣声声，模糊了最后的那句我爱你，挥手告别，再一次目送着你远离家乡。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl9.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl9.jpg" />
+            <figure style="display:none;">296/365 10月23日 迎着灼目的阳光，懒洋洋的听着轻快的音乐，漫游在绵长的秋日时光里。穿过半座喧响的城市，停驻在铺满阳光的街道尽头，放空的享受一个人的日子。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl10.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl10.jpg" />
+            <figure style="display:none;">291/365 10月18日 好像做了一个很长的梦，变成佐罗在城市里穿梭冒险，在街角变出一朵玫瑰等着心仪的姑娘，闪出去悠悠的递给她，再一甩斗篷头也不回的离去。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl11.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl11.jpg" />
+            <figure style="display:none;">294/365 10月21日 不要说话，让暗黄色的路灯继续安静看着他们温柔相依并排穿过狭窄的巷子，走向下一个剧本。时间匆匆碾过年华，这城市里的巷道时刻都上演着不同的剧情，每个人都在这里用心的演绎，让这座城市的电影，永远没有终点。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl12.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl12.jpg" />
+            <figure style="display:none;">270/365 9月27日 远离被暖色冲撞的城市，静静的听海等待。彩灯，璨若繁星渺如梦境，海浪，静静安卧泛着波光微微。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl13.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl13.jpg" />
+            <figure style="display:none;">260/365 9月17日 扶着心爱的你走进马厩，卸下淋湿的华服，宛若捧着盛放的裙摆。舞起快乐的舞步，这一刻换我为你起舞。#project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl14.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl14.jpg" />
+            <figure style="display:none;">262/365 9月19日 拉着你走向阳光，一路上叮叮当当，小雨靴踩着欢快的旋律，一路倾听幸福的歌唱。#project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl15.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl15.jpg" />
+            <figure style="display:none;">259/365 9月16日 期待的眼神焦急地眺望着远方，妈妈是要回来了吧！ #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl16.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl16.jpg" />
+            <figure style="display:none;">247/365 9月4日 这样的清晨，送别的晨雾盖满公路，又送走一个回国的朋友。一个背影写满离别，一个转身道尽千言无语。#project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl17.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl17.jpg" />
+            <figure style="display:none;">238/365 8月26日 遇到你之后的时光都叫做最好的时光。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl18.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl18.jpg" />
+            <figure style="display:none;">230/365 8月18日 微凉的夜晚，城市的灿烂低头看着一场又一场的柔情在这里上场又悄悄谢幕然后静静离开，它看着的是他们，也是我，也是你。我们的青春跟这座城市交错重叠，即将过眼云烟但定会时常眷恋的梦见。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl19.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl19.jpg" />
+            <figure style="display:none;">211/365 7月31日 身着最美的衣裳，独自流离于夕阳之前。如果恰好身边有你的陪伴，那就一起出发吧。  #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl20.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl20.jpg" />
+            <figure style="display:none;">183/365 7月2日 伏在爸爸肩上哭的梨花带雨的小朋友，眼睛里依然是刚刚嚷嚷着要买的玩具。#project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl21.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl21.jpg" />
+            <figure style="display:none;">177/365 6月26日 两种人生。 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl22.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl22.jpg" />
+            <figure style="display:none;">99/365 4月9日 你有你的舞台，我有我的街头。见过各种各样的街头艺人，这个在红绿灯间歇走上人行道用几十秒的时间表演滑稽戏的人，让一排司机拍手叫好心甘情愿的摇下窗户给了零钱 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl23.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl23.jpg" />
+            <figure style="display:none;">98/365 4月8日 放肆在空气中敲打着鼓点，全情投入在耳机里的音乐世界的单车少年，又让我对巴黎这座狂热的艺术之都增添不少好感 #project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl24.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl24.jpg" />
+            <figure style="display:none;">86/365 3月27日 他有两个耳环，穿着嘻哈的衣服，坐在路边装满家装工具的皮卡车里，却戴着秀气的眼镜，认真的看大部头的书，安静平和的毫无违和感。每次看到这种城市里的精神符号就忍不住要拍，我远远看到他的时候就下意识的端起相机，然后走到他侧面，靠近窗户，按下这一张。#project365#</figure>
+        </a>
+        <a class="gallery-a" href="/images/xyl/xyl25.jpg" data-size="" data-author="许英龙">
+            <img class="gallery-img" src="/images/xyl/xyl25.jpg" />
+            <figure style="display:none;">77/365 3月18日 演唱会散场之后，在慢慢收拾东西的鼓手。主角们固然重要，缺少任何一个配角，都不会有完美的演唱会。从彩排一直看到表演结束，每一位团队成员都很辛苦，我第一次全程跟拍演唱会，第一场按快门按到手抽经，第一次看到自己的名字以摄影的名义出现在大屏幕上，表示纪念 #project365#</figure>
+        </a>
+    </div>
+
+</body>
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/photoswipe/photoswipe.js"></script>
+<script src="/js/photoswipe/photoswipe-ui-default.js"></script>
+<script src="/js/photoswipe/galleryView.js"></script>
+<script>
+
+    $(function(){
+        initGallery();
+    });
+
+    //设置画廊图片大小，缩略图显示位置
+    function initGallery(){
+        //初始化预览图大小
+        var windowWidth = $('.gallery').width();
+        var width = (windowWidth - 30) / 4;
+        console.log(windowWidth);
+        console.log(width);
+        $('.gallery-a').css({'width':width});
+        $('.gallery-img').css('width',width);
+
+        //设置图片尺寸防止图片比例变形
+        var gaImages = $('.gallery-a');
+        gaImages.each(function(index,element){
+            var that = this;
+            var imgUrl = this.href;
+            var img = new Image();
+            img.src = imgUrl;
+            // 加载完成执行
+            img.onload = function(){
+                var imgSize = img.width + 'x' + img.height;
+                $(that).attr('data-size', imgSize);
+                if(gaImages.length -1 == index){
+                    //瀑布流
+                    waterFall();
+                    //初始化PhotoSwipe
+                    initPhotoSwipeFromDOM('.gallery');
+                }
+            }
+        })
+
+        //设置缩略图居中显示
+        // var gaWidth = $(".gallery-a").width();
+        // $(".gallery-img").css({"width":"auto","height":gaWidth});
+        // $(".gallery-img").each(function(){
+        //     if($(this).width() < gaWidth){
+        //         $(this).css({"width":gaWidth,"height":"auto"});
+        //         var giHeight = $(this).height();
+        //         $(this).css("margin-top",(gaWidth / 2) - (giHeight / 2));
+        //     }else{
+        //         var giWidth = $(this).width();
+        //         $(this).css("margin-left",(gaWidth / 2) - (giWidth / 2));
+        //     }
+        //     $(this).css('display','block');
+        // });
+
+        
+    }
+
+    
+    // 封装成一个函数
+    function waterFall() {
+        var box = document.getElementById('gallery');
+        var items = box.children;
+        console.log(items);
+        // 定义每一列之间的间隙 为10像素
+        var gap = 10;
+        // 1- 确定列数  = 页面的宽度 / 图片的宽度
+        var pageWidth = getClient().width;
+        var itemWidth = items[0].offsetWidth;
+        var columns = parseInt(pageWidth / (itemWidth + gap));
+        var arr = [];
+        for (var i = 0; i < items.length; i++) {
+            if (i < columns) {
+                // 2- 确定第一行
+                items[i].style.top = 0;
+                items[i].style.left = (itemWidth + gap) * i + 'px';
+                arr.push(items[i].offsetHeight);
+
+            } else {
+                // 其他行
+                // 3- 找到数组中最小高度  和 它的索引
+                var minHeight = arr[0];
+                var index = 0;
+                for (var j = 0; j < arr.length; j++) {
+                    if (minHeight > arr[j]) {
+                        minHeight = arr[j];
+                        index = j;
+                    }
+                }
+                // 4- 设置下一行的第一个盒子位置
+                // top值就是最小列的高度 + gap
+                items[i].style.top = arr[index] + gap + 'px';
+                // left值就是最小列距离左边的距离
+                items[i].style.left = items[index].offsetLeft + 'px';
+
+                // 5- 修改最小列的高度 
+                // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
+                arr[index] = arr[index] + items[i].offsetHeight + gap;
+            }
+        }
+    }
+    // 页面尺寸改变时实时触发
+    window.onresize = function() {
+        waterFall();
+    };
+    // 当加载到第30张的时候
+    // window.onscroll = function() {
+    //     if (getClient().height + getScrollTop() >= items[items.length - 1].offsetTop) {
+    //         // 模拟 ajax 获取数据    
+    //         var datas = [
+    //             "../image/瀑布流/001.jpg",
+    //             "../image/瀑布流/030.jpg"
+    //         ];
+    //         for (var i = 0; i < datas.length; i++) {
+    //             var div = document.createElement("div");
+    //             div.className = "item";
+    //             div.innerHTML = '<img src="' + datas[i] + '" alt="">';
+    //             box.appendChild(div);
+    //         }
+    //         waterFall();
+    //     }
+
+    // };
+
+    // clientWidth 处理兼容性
+    function getClient() {
+        return {
+            width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+            height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+        }
+    }
+    // scrollTop兼容性处理
+    function getScrollTop() {
+        return window.pageYOffset || document.documentElement.scrollTop;
+    }
+
+</script>
+</html>
