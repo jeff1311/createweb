@@ -1,11 +1,13 @@
-document.write('<link href="/css/loading.css" rel="stylesheet"/>');
-document.write('<script src="/js/jquery-3.4.1.min.js"><\/script>');
-document.onreadystatechange = subSomething;
-function subSomething() {
-    if (document.readyState == "complete") {
-        Mopload();
-    }
-}
+// document.write('<link href="/css/loading.css" rel="stylesheet"/>');
+// document.write('<script src="/js/jquery-3.4.1.min.js"><\/script>');
+// document.onreadystatechange = subSomething;
+// function subSomething() {
+//     if (document.readyState == "complete") {
+//     }
+// }
+
+Mopload();
+
 function initevent() {
     jQuery.event.add();
 }
