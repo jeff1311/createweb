@@ -16,24 +16,24 @@
         }
         .gallery{
             position: relative;
-            margin: 10px;
+            margin: 100px;
         }
         .gallery-a{
             position:absolute;
             /* display: grid; */
             cursor:pointer;
-            box-shadow: 0px 0px 5px 0px rgba(80,80,80,0.7); 
-            -webkit-box-shadow: 0px 0px 5px 0px rgba(80,80,80,0.7);  
-            -moz-box-shadow: 0px 0px 5px 0px rgba(80,80,80,0.7); 
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7); 
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);  
+            -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7); 
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             -o-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             -moz-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             -webkit-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .gallery-a:hover{
-            box-shadow: 0px 0px 8px 1px rgb(63, 50, 50); 
-            -webkit-box-shadow: 0px 0px 8px 1px rgba(80,80,80);  
-            -moz-box-shadow: 0px 0px 8px 1px rgba(80,80,80); 
+            box-shadow: 0px 0px 8px 1px rgba(0,0,0); 
+            -webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0);  
+            -moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0); 
         }
         .gallery-img{
             vertical-align: top;
@@ -61,10 +61,25 @@
             height:100px;
             position: absolute;
         }
+        .background{
+            top:0;
+            position:fixed;
+            width: 100%;
+            height: 100%;
+            /* background-size: cover; */
+            background-repeat: repeat;
+            /* background-position-x: center;
+            background-position-y: center; */
+            /* background-image: url(/images/bg/bg1.jpg); */
+            background-image: url(/images/bg/bg2.png);
+            /* opacity: 0.9; */
+        }
     </style>
 </head>
 <body>
     
+    <div class="background"></div>
+
     <div class="gallery" id="gallery">
         <a class="gallery-a" href="/images/xyl/xyl1.jpg" data-author="许英龙">
             <img class="gallery-img" src="/images/xyl/xyl1.jpg" />
@@ -203,7 +218,7 @@
     function initGallery(){
         //初始化预览图大小
         var windowWidth = $('.gallery').width();
-        var width = (windowWidth - 30) / 4;
+        var width = (windowWidth - 60) / 4;
         console.log(windowWidth);
         console.log(width);
         $('.gallery-a').css({'width':width});
@@ -211,7 +226,7 @@
 
         var images = $('.gallery-a');
         // 定义每一列之间的间隙 为10像素
-        var gap = 10;
+        var gap = 20;
         // 1- 确定列数  = 页面的宽度 / 图片的宽度
         var pageWidth = getClient().width;
         var itemWidth = images[0].offsetWidth;
@@ -278,8 +293,8 @@
         var box = document.getElementById('gallery');
         var items = box.children;
         
-        // 定义每一列之间的间隙 为10像素
-        var gap = 10;
+        // 定义每一列之间的间隙 为20像素
+        var gap = 20;
         // 1- 确定列数  = 页面的宽度 / 图片的宽度
         var pageWidth = getClient().width;
         var itemWidth = items[0].offsetWidth;
