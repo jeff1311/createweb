@@ -1,44 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title> 页面名称 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>zoom</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: 110%;
+            background-repeat:no-repeat;
+            /* background-position-x: center;
+            background-position-y: center; */
+            background-image:url(/images/xyl/xyl12.jpg);
+        }
+    </style>
 </head>
 <body>
-<canvas id="canvasId" width="400" height="400" style="background-color: #eee;"></canvas>
-<script type="text/javascript">
-var canvas = document.getElementById("canvasId");
-var ctx = canvas.getContext("2d");
-var flag = false;
-var tc = document.createElement("canvas");
-tc.width = canvas.width;
-tc.height = canvas.height;
-var tctx = tc.getContext("2d");
-var x = 0;
-var y = 0;
-canvas.onmousedown = function (e) {
-    e = e || window.event;
-    x = e.clientX - canvas.offsetLeft + (document.body.scrollLeft || document.documentElement.scrollLeft);
-    y = e.clientY - canvas.offsetTop  + (document.body.scrollTop || document.documentElement.scrollTop);
-    flag = true;
-    tctx.drawImage(canvas,0,0,canvas.width,canvas.height);
-}
-canvas.onmousemove = function (e) {
-    if (!flag) return;
-    e = e || window.event;
-    var gx = e.clientX - canvas.offsetLeft + (document.body.scrollLeft || document.documentElement.scrollLeft);
-    var gy = e.clientY - canvas.offsetTop  + (document.body.scrollTop || document.documentElement.scrollTop);
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.drawImage(tc,0,0,canvas.width,canvas.height);
-    ctx.beginPath();
-    ctx.moveTo(x,y);
-    ctx.lineTo(gx,gy);
-    ctx.stroke();
-}
-canvas.onmouseup = function (e) {
-    flag = false;
-}
-</script>
+    <div class="wrapper"></div>
 </body>
+<script src="/js/jquery-3.4.1.min.js">asdfasdf</script>
+<script>
+    $('.wrapper').mousemove(function(e) {
+        var x = (e.pageX * -1 / 10), y = (e.pageY * -1 / 10);
+        $(this).css('background-position', x + 'px ' + y + 'px');
+    });
+</script>
 </html>
