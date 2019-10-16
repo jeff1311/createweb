@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>welcome</title>
+    <title>CWEBE</title>
     <style>
         *{
             font-family:Microsoft YaHei;
@@ -24,12 +24,14 @@
             width:100%;
             height:70px;
             background:#ffffff;
+            z-index: 100;
         }
         .logo{
             top:0px;
             left:100px;
             position:absolute;
             display:inline-block;
+            /* cursor:default; */
         }
         .logo > span{
             display: inline-block;
@@ -83,7 +85,7 @@
             background-position-y: center; */
             background-image: url(/images/bg3.jpg);
             /* background-image:url(/images/tokyo.jpg); */
-            background-color:#f9f9f9;
+            /* background-color:#f9f9f9; */
         }
         footer{
             position: absolute;
@@ -98,11 +100,18 @@
             margin-top:auto;
             margin-bottom: auto;
             bottom: 0;
+            z-index: 100;
         }
         footer a{
             text-decoration: none;
             outline: none;
             color:#607d8b;
+        }
+        #paperplane{
+            position: absolute;
+            width: 300px;
+            top: 400px;
+            left: 400px;
         }
         
     </style>
@@ -116,10 +125,12 @@
             </div>
             
             <nav>
-                <a class="link" href="html/create.jq.html" title="点击进入">网页编辑器</a>
-                <a class="link" href="html/gallery.html" title="图库">图库</a>
+                <a class="link" href="/html/create.jq.html" title="点击进入">网页编辑器</a>
+                <a class="link" href="/html/gallery.html" title="图库">图库</a>
             </nav>
         </header>
+
+        <img id="paperplane" src="/images/mario.png"/>
 
         <footer>
             Copyright&nbsp;©2019&nbsp;cwebe.com. All rights reserved.&nbsp;&nbsp;<a href="http://www.beian.gov.cn/">苏ICP备19055309号</a>
@@ -127,11 +138,13 @@
     </div>
 
 </body>
-<script src="/js/jquery-3.4.1.min.js">asdfasdf</script>
+<script src="/js/jquery-3.4.1.min.js"></script>
 <script>
     $('.main').mousemove(function(e) {
         var x = (e.pageX * -1 / 10), y = (e.pageY * -1 / 10);
         $(this).css('background-position', x + 'px ' + y + 'px');
+        var x2 = (e.pageX * -1 / 5) + 400, y2 = (e.pageY * -1 / 5) + 400;
+        $('#paperplane').css({'left': x2 + 'px','top':y2 + 'px'});
     });
 </script>
 </html>

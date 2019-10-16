@@ -68,51 +68,29 @@ document.writeln("<\/div>");
 
 var initPhotoSwipeFromDOM = function(gallerySelector) {
 
-	var parseThumbnailElements = function(el) {
-		var thumbElements = el.childNodes,
-			numNodes = thumbElements.length,
-			items = [],
-			el,
-			childElements,
-			thumbnailEl,
-			size,
-			item;
-
-		for(var i = 0; i < numNodes; i++) {
-			el = thumbElements[i];
-
-			// include only element nodes 
-			if(el.nodeType !== 1) {
-			  continue;
-			}
-
-			childElements = el.children;
-
-			size = el.getAttribute('data-size').split('x');
-
-			// console.log(el.children);
-
-			// create slide object
-			item = {
-				src: el.getAttribute('href'),
+	//4
+	var parseThumbnailElements = function(ele) {
+		var items = [];
+		for(var i = 0;i < ele.children.length;i ++){
+			var e = ele.children[i];
+			var size = e.getAttribute('data-size').split('x');
+			var item = {
+				src: e.getAttribute('href'),
 				w: parseInt(size[0], 10),
 				h: parseInt(size[1], 10),
-				author: el.getAttribute('data-author')
+				author: e.getAttribute('data-author')
 			};
-
-			item.el = el; // save link to element for getThumbBoundsFn
-
-			if(childElements.length > 0) {
-			  item.msrc = childElements[0].getAttribute('src'); // thumbnail url
-			  if(childElements.length > 1) {
-				  item.title = childElements[1].innerHTML; // caption (contents of figure)
-			  }
+			item.el = e; // save link to element for getThumbBoundsFn
+			if(e.children.length > 0) {
+				console.log(e.children[0]);
+				item.msrc = e.children[0].getAttribute('src'); // thumbnail url
+				if(e.children.length > 1) {
+					item.title = e.children[1].innerHTML; // caption (contents of figure)
+				}
 			}
-
-
-			var mediumSrc = el.getAttribute('data-med');
+			var mediumSrc = e.getAttribute('data-med');
 			  if(mediumSrc) {
-				size = el.getAttribute('data-med-size').split('x');
+				size = e.getAttribute('data-med-size').split('x');
 				// "medium-sized" image
 				item.m = {
 					  src: mediumSrc,
@@ -129,7 +107,6 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
 			items.push(item);
 		}
-
 		return items;
 	};
 
@@ -204,6 +181,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 		return params;
 	};
 
+	//3
 	var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
 		var pswpElement = document.querySelectorAll('.pswp')[0],
 			gallery,
@@ -341,6 +319,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 		gallery.init();
 	};
 
+	//1
 	// select all gallery elements
 	var galleryElements = document.querySelectorAll( gallerySelector );
 	for(var i = 0, l = galleryElements.length; i < l; i++) {
@@ -348,10 +327,10 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 		galleryElements[i].onclick = onThumbnailsClick;
 	}
 
+	//2
 	// Parse URL and open gallery if it contains #&pid=3&gid=1
 	var hashData = photoswipeParseHash();
 	if(hashData.pid && hashData.gid) {
-		console.log('hashData');
 		openPhotoSwipe( hashData.pid,  galleryElements[ hashData.gid - 1 ], true, true );
 	}
 };
