@@ -5,8 +5,12 @@
     font-family: SHS-L;
 }
 @font-face {
+    font-family: "ALIPUHUI-R";
+    src: url(/fonts/Alibaba-PuHuiTi-Regular.ttf);
+}
+@font-face {
     font-family: "SHS-L";
-    src: url(/fonts/shs/SourceHanSansCN-Light.otf);
+    src: url(/fonts/SourceHanSansCN-Light.otf);
 }
 .gallery{
     position: relative;
