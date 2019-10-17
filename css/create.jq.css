@@ -1,6 +1,9 @@
 *{
-    /* font-family:Microsoft YaHei; */
-    font-family:SHS-L;
+    /* font-family:SHS-L; */
+    font-family:Microsoft YaHei;
+    /* font-family: Microsoft JhengHei; */
+    -webkit-font-smoothing: antialiased;/*chrome、safari*/
+    -moz-osx-font-smoothing: grayscale;/*firefox*/
 }
 @font-face {
     font-family: "ALIPUHUI-R";
@@ -10,7 +13,7 @@
     font-family: "SHS-L";
     src: url(/fonts/SourceHanSansCN-Light.otf);
 }
-/*menu*/
+/*menu*/    
 .menu{
     top:0;
     left:0;

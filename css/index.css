@@ -1,6 +1,9 @@
 *{
-    font-family:SHS-L;
-    /* font-family:Microsoft YaHei; */
+    /* font-family:SHS-L; */
+    font-family:Microsoft YaHei;
+    /* font-family: Microsoft JhengHei; */
+    -webkit-font-smoothing: antialiased;/*chrome、safari*/
+    -moz-osx-font-smoothing: grayscale;/*firefox*/
     -moz-user-select:none; /* Firefox私有属性 */
     -webkit-user-select:none; /* WebKit内核私有属性 */
     -ms-user-select:none; /* IE私有属性(IE10及以后) */
@@ -33,6 +36,7 @@ header{
     position:absolute;
     display:inline-block;
     /* cursor:default; */
+    font-family: Microsoft JhengHei !important;
 }
 .logo > span{
     display: inline-block;
@@ -72,6 +76,7 @@ header nav{
     position: absolute;
     left: 300px;
     height:70px;
+    font-size: 15px;
 }
 .main{
     position: absolute;
