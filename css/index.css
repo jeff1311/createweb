@@ -10,15 +10,11 @@
 }
 @font-face {
     font-family: "ALIPUHUI-R";
-    src: url(/fonts/alibaba/Alibaba-PuHuiTi-Regular.ttf);
+    src: url(/fonts/Alibaba-PuHuiTi-Regular.ttf);
 }
 @font-face {
     font-family: "SHS-L";
-    src: url(/fonts/shs/SourceHanSansCN-Light.otf);
-}
-@font-face {
-    font-family: "SHS-EL";
-    src: url(/fonts/shs/SourceHanSansCN-ExtraLight.otf);
+    src: url(/fonts/SourceHanSansCN-Light.otf);
 }
 body{
     margin:0;
