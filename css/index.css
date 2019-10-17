@@ -36,7 +36,6 @@ header{
     position:absolute;
     display:inline-block;
     /* cursor:default; */
-    font-family: Microsoft JhengHei !important;
 }
 .logo > span{
     display: inline-block;
