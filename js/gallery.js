@@ -34,8 +34,8 @@ function fill(arr){
 //设置画廊图片大小，缩略图显示位置
 function initGallery(){
     //初始化预览图大小
-    var windowWidth = $('.gallery').width();
-    var width = (windowWidth - 60) / 4;
+    var galleryWidth = $('.gallery').width();
+    var width = (galleryWidth - 80) / 4;
     // $('.gallery-a').css({'width':width});
     // alert(1);
     $('.gallery img').css('width',width);
