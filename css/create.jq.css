@@ -1,5 +1,14 @@
 *{
-    font-family:Microsoft YaHei;
+    /* font-family:Microsoft YaHei; */
+    font-family:SHS-L;
+}
+@font-face {
+    font-family: "SHS-L";
+    src: url(/fonts/shs/SourceHanSansCN-Light.otf);
+}
+@font-face {
+    font-family: "SHS-EL";
+    src: url(/fonts/shs/SourceHanSansCN-ExtraLight.otf);
 }
 /*menu*/
 .menu{

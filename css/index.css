@@ -1,0 +1,120 @@
+*{
+    font-family:SHS-L;
+    /* font-family:Microsoft YaHei; */
+    -moz-user-select:none; /* Firefox私有属性 */
+    -webkit-user-select:none; /* WebKit内核私有属性 */
+    -ms-user-select:none; /* IE私有属性(IE10及以后) */
+    -khtml-user-select:none; /* KHTML内核私有属性 */
+    -o-user-select:none; /* Opera私有属性 */
+    user-select:none; /* CSS3属性 */
+}
+@font-face {
+    font-family: "ALIPUHUI-R";
+    src: url(/fonts/alibaba/Alibaba-PuHuiTi-Regular.ttf);
+}
+@font-face {
+    font-family: "SHS-L";
+    src: url(/fonts/shs/SourceHanSansCN-Light.otf);
+}
+@font-face {
+    font-family: "SHS-EL";
+    src: url(/fonts/shs/SourceHanSansCN-ExtraLight.otf);
+}
+body{
+    margin:0;
+    padding:0;
+}
+header{
+    position: absolute;
+    width:100%;
+    height:70px;
+    background:#ffffff;
+    z-index: 100;
+}
+.logo{
+    top:0px;
+    left:100px;
+    position:absolute;
+    display:inline-block;
+    /* cursor:default; */
+}
+.logo > span{
+    display: inline-block;
+    height: 70px;
+    line-height: 70px;
+    vertical-align: top;
+    font-size: 30px;
+    text-shadow: 0 0 3px rgba(80,80,80,0.3);
+}
+.logo > span:nth-child(1){
+    color:#607d8b;
+}
+.logo > span:nth-child(2){
+    color: #5ecdff;
+}
+.logo > span:nth-child(3){
+    color:#8BC34A;
+}
+header .link{
+    display: inline-block;
+    line-height: 70px;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    color:#607d8b;
+    margin-right: 30px;
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+header .link:hover{
+    color:#5ecdff;
+}
+header nav{
+    display: inline-block;
+    position: absolute;
+    left: 300px;
+    height:70px;
+}
+.main{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-size: 125%;
+    /* background-repeat: no-repeat; */
+    /* background-position-x: center;
+    background-position-y: center; */
+    background-image: url(/images/bg3.jpg);
+    /* background-image:url(/images/tokyo.jpg); */
+    /* background-color:#f9f9f9; */
+}
+footer{
+    position: absolute;
+    width:100%;
+    height:100px;
+    background:#ffffff;
+    font-size: 12px;
+    color:#607d8b;
+    text-align: center;
+    line-height: 100px;
+    margin:0;
+    margin-top:auto;
+    margin-bottom: auto;
+    bottom: 0;
+    z-index: 100;
+}
+footer a{
+    text-decoration: none;
+    outline: none;
+    color:#607d8b;
+}
+#widget{
+    position: absolute;
+    width: 300px;
+    top: 400px;
+    left: 400px;
+}

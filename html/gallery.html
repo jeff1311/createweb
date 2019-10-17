@@ -8,90 +8,71 @@
     <link rel="stylesheet" href="/css/photoswipe/photoswipe.css">
     <link rel="stylesheet" href="/css/photoswipe/default-skin/default-skin.css">
     <link rel="stylesheet" href="/css/loading.css">
+    <link rel="stylesheet" href="/css/gallery.css">
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            font-family:Microsoft YaHei;
-        }
-        .gallery{
-            position: relative;
-            margin: 100px;
-        }
-        .gallery > a{
-            position:absolute;
-            top:-1000px;
-            /* display: grid; */
-            cursor:pointer;
-            overflow: hidden;
-            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7); 
-            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);  
-            -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7); 
-            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-            -o-transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-            -moz-transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-            -webkit-transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .gallery > a:hover{
-            box-shadow: 0px 0px 10px 3px rgb(0,0,0); 
-            -webkit-box-shadow: 0px 0px 10px 3px rgb(0,0,0);  
-            -moz-box-shadow: 0px 0px 10px 3px rgb(0,0,0); 
-        }
-        .gallery img{
-            vertical-align: top;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            -o-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            -moz-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            -webkit-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .gallery img:hover{
-            transform:scale(1.2);
-        }
-        .gallery figure{
-            display: none;
-        }
-        .loading-background{
-            top: 0;
-            left: 0;
-            background:#ffffff;
-            position: fixed;
-            width: 100%;
-            height: 100%;
+        header{
+            width:100%;
+            height:70px;
+            /* background:#2b2b2b; */
             z-index: 100;
-        }
-        .loading-box{
-            margin: 0;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: auto;
-            margin-bottom: auto;
-            top: 0px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
-            width:300px;
-            height:100px;
-            position: absolute;
-        }
-        .background{
-            top:0;
-            position:fixed;
-            width: 100%;
-            height: 100%;
-            /* background-size: cover; */
+            position: relative;
+            box-shadow: 0px 0px 3px 0px #000000;
             background-repeat: repeat;
-            /* background-position-x: center;
-            background-position-y: center; */
-            /* background-image: url(/images/vector/bg1.jpg); */
             background-image: url(/images/vector/bg2.png);
-            /* background: linear-gradient(to right,#101010 , #2b2e38); */
-            /* background: linear-gradient(to left, #f58365, #ff188a) !important; */
-            opacity: 0.95;
         }
+        .logo{
+            top:0px;
+            left:100px;
+            position:absolute;
+            display:inline-block;
+            /* cursor:default; */
+            -moz-user-select:none; /* Firefox私有属性 */
+            -webkit-user-select:none; /* WebKit内核私有属性 */
+            -ms-user-select:none; /* IE私有属性(IE10及以后) */
+            -khtml-user-select:none; /* KHTML内核私有属性 */
+            -o-user-select:none; /* Opera私有属性 */
+            user-select:none; /* CSS3属性 */
+        }
+        .logo > span{
+            display: inline-block;
+            height: 70px;
+            line-height: 70px;
+            vertical-align: top;
+            font-size: 30px;
+            text-shadow: 0 0 3px rgba(80,80,80,0.3);
+            background: -webkit-linear-gradient(left, #f58365, #ff188a);/* 背景色渐变 */
+            background-clip: text;
+            -webkit-background-clip: text;         /* 规定背景的划分区域 */
+            -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
+            font-size: 27px;
+        }
+        .logo > span:hover{
+            background: -webkit-linear-gradient(left, #4285f4 , #ea4335);
+            background-clip: text;
+            -webkit-background-clip: text;         /* 规定背景的划分区域 */
+            -webkit-text-fill-color: transparent;  /* 防止字体颜色覆盖 */
+            font-size: 27px;
+        }
+        /* .logo > span:nth-child(4){
+            background: -webkit-linear-gradient(left, #f58365, #ff188a);背景色渐变
+            -webkit-background-clip: text;         规定背景的划分区域
+            -webkit-text-fill-color: transparent;  防止字体颜色覆盖
+            font-size: 27px;
+        } */
+
     </style>
 </head>
 <body>
     
+    <header>
+        <a href="/index.html">
+            <div class="logo">
+                <span>CWEBE&nbsp;图库</span>
+            </div>
+        </a>
+
+    </header>
+
     <div class="background"></div>
 
     <div class="gallery" id="gallery"></div>
@@ -108,203 +89,5 @@
 <script src="/js/photoswipe/galleryView.js"></script>
 <script src="/js/loading.js"></script>
 <script src="/js/testdata.js"></script>
-<script>
-
-    // loading();
-
-    fill(data);
-
-    $(function(){
-        initGallery();
-    });
-
-    function loading(){
-        var loadingBlock = ['<div class="loading-background">',
-                            '	<div class="loading-box">',
-                            '		<div class="mop-load-8"></div>',
-                            '	</div>',
-                            '</div>'].join("");
-        $('body').append(loadingBlock);
-    }
-    function removeLoading(){
-        $('.loading-background').remove();
-    }
-
-    function fill(arr){
-        var tags = '';
-        for(var i = 0;i < arr.length;i ++){
-            var tag = '';
-            tag += '<a href="' + arr[i].imgUrl + '" data-size="' + arr[i].width + 'x' + arr[i].height + '" data-author="' + arr[i].author + '">';
-            tag += '	<img src="' + arr[i].thuUrl + '" />';
-            tag += '	<figure>' + arr[i].text + '</figure>';
-            tag += '</a>';
-            tags += tag;
-        }
-        $('#gallery').append(tags);
-    }
-
-    //设置画廊图片大小，缩略图显示位置
-    function initGallery(){
-        //初始化预览图大小
-        var windowWidth = $('.gallery').width();
-        var width = (windowWidth - 60) / 4;
-        // $('.gallery-a').css({'width':width});
-        // alert(1);
-        $('.gallery img').css('width',width);
-
-        var imgBoxes = $('.gallery > a');
-        // 定义每一列之间的间隙 为10像素
-        var gap = 20;
-        // 1- 确定列数  = 页面的宽度 / 图片的宽度
-        var pageWidth = getClient().width;
-        var itemWidth = imgBoxes[0].offsetWidth;
-        var columns = parseInt(pageWidth / (itemWidth + gap));
-        var arr = [];
-        var i = 0;
-        function waterfall(imgBoxes,images){
-            if(i <= imgBoxes.length - 1){
-                var imgUrl = images[i].src;
-                var img = new Image();
-                img.src = imgUrl;
-                img.onload = function(){
-                    //设置图片尺寸防止图片比例变形
-                    // var imgSize = img.width + 'x' + img.height;
-                    // $(imgBoxes[i]).attr('data-size', imgSize);
-
-                    if (i < columns) {
-                        // 2- 确定第一行
-                        imgBoxes[i].style.top = 0;
-                        imgBoxes[i].style.left = (itemWidth + gap) * i + 'px';
-                        arr.push(imgBoxes[i].offsetHeight);
-                    } else {
-                        // 其他行
-                        // 3- 找到数组中最小高度  和 它的索引
-                        var minHeight = arr[0];
-                        var index = 0;
-                        for (var j = 0; j < arr.length; j++) {
-                            if (minHeight > arr[j]) {
-                                minHeight = arr[j];
-                                index = j;
-                            }
-                        }
-                        // 4- 设置下一行的第一个盒子位置
-                        // top值就是最小列的高度 + gap
-                        imgBoxes[i].style.top = arr[index] + gap + 'px';
-                        // left值就是最小列距离左边的距离
-                        imgBoxes[i].style.left = imgBoxes[index].offsetLeft + 'px';
-
-                        // 5- 修改最小列的高度 
-                        // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
-                        arr[index] = arr[index] + imgBoxes[i].offsetHeight + gap;
-                    }
-                    i ++;
-                    if(imgBoxes.length == i){
-                        //瀑布流
-                        // waterFall();
-                        //初始化PhotoSwipe
-                        initPhotoSwipeFromDOM('.gallery');
-                        //隐藏loading
-                        // removeLoading();
-                    }
-                    setTimeout(function(){
-                        waterfall(imgBoxes,images);
-                    },100);
-                }
-            }
-        }
-
-        var images = $('.gallery img');
-        waterfall(imgBoxes,images);
-
-        // setTimeout(function(){
-        //     //瀑布流
-        //     waterFall();
-        //     //初始化PhotoSwipe
-        //     initPhotoSwipeFromDOM('.gallery');
-        //     //隐藏loading
-        //     removeLoading();
-        // },200);
-    }
-
-    
-
-    // 封装成一个函数
-    function waterFall() {
-        var box = document.getElementById('gallery');
-        var items = box.children;
-        
-        // 定义每一列之间的间隙 为20像素
-        var gap = 20;
-        // 1- 确定列数  = 页面的宽度 / 图片的宽度
-        var pageWidth = getClient().width;
-        var itemWidth = items[0].offsetWidth;
-        var columns = parseInt(pageWidth / (itemWidth + gap));
-        var arr = [];
-        for (var i = 0; i < items.length; i++) {
-            if (i < columns) {
-                // 2- 确定第一行
-                items[i].style.top = 0;
-                items[i].style.left = (itemWidth + gap) * i + 'px';
-                arr.push(items[i].offsetHeight);
-
-            } else {
-                // 其他行
-                // 3- 找到数组中最小高度  和 它的索引
-                var minHeight = arr[0];
-                var index = 0;
-                for (var j = 0; j < arr.length; j++) {
-                    if (minHeight > arr[j]) {
-                        minHeight = arr[j];
-                        index = j;
-                    }
-                }
-                // 4- 设置下一行的第一个盒子位置
-                // top值就是最小列的高度 + gap
-                items[i].style.top = arr[index] + gap + 'px';
-                // left值就是最小列距离左边的距离
-                items[i].style.left = items[index].offsetLeft + 'px';
-
-                // 5- 修改最小列的高度 
-                // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
-                arr[index] = arr[index] + items[i].offsetHeight + gap;
-            }
-        }
-    }
-    // 页面尺寸改变时实时触发
-    window.onresize = function() {
-        waterFall();
-    };
-
-    // 当加载到第30张的时候
-    // window.onscroll = function() {
-    //     if (getClient().height + getScrollTop() >= items[items.length - 1].offsetTop) {
-    //         // 模拟 ajax 获取数据    
-    //         var datas = [
-    //             "../image/瀑布流/001.jpg",
-    //             "../image/瀑布流/030.jpg"
-    //         ];
-    //         for (var i = 0; i < datas.length; i++) {
-    //             var div = document.createElement("div");
-    //             div.className = "item";
-    //             div.innerHTML = '<img src="' + datas[i] + '" alt="">';
-    //             box.appendChild(div);
-    //         }
-    //         waterFall();
-    //     }
-
-    // };
-
-    // clientWidth 处理兼容性
-    function getClient() {
-        return {
-            width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-            height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
-        }
-    }
-    // scrollTop兼容性处理
-    function getScrollTop() {
-        return window.pageYOffset || document.documentElement.scrollTop;
-    }
-
-</script>
+<script src="/js/gallery.js"></script>
 </html>
