@@ -33,11 +33,11 @@ function fill(arr){
 
 //设置画廊图片大小，缩略图显示位置
 function initGallery(){
+    //初始化photoSwipe
+    initPhotoSwipeFromDOM('.gallery');
     //初始化预览图大小
     var galleryWidth = $('.gallery').width();
     var width = (galleryWidth - 80) / 4;
-    // $('.gallery-a').css({'width':width});
-    // alert(1);
     $('.gallery img').css('width',width);
 
     var imgBoxes = $('.gallery > a');
@@ -86,14 +86,14 @@ function initGallery(){
                     arr[index] = arr[index] + imgBoxes[i].offsetHeight + gap;
                 }
                 i ++;
-                if(imgBoxes.length == i){
-                    //瀑布流
-                    // waterFall();
-                    //初始化PhotoSwipe
-                    initPhotoSwipeFromDOM('.gallery');
-                    //隐藏loading
-                    // removeLoading();
-                }
+                // if(imgBoxes.length == i){
+                //     //瀑布流
+                //     // waterFall();
+                //     //初始化PhotoSwipe
+                //     initPhotoSwipeFromDOM('.gallery');
+                //     //隐藏loading
+                //     // removeLoading();
+                // }
                 setTimeout(function(){
                     waterfall(imgBoxes,images);
                 },100);
@@ -103,15 +103,6 @@ function initGallery(){
 
     var images = $('.gallery img');
     waterfall(imgBoxes,images);
-
-    // setTimeout(function(){
-    //     //瀑布流
-    //     waterFall();
-    //     //初始化PhotoSwipe
-    //     initPhotoSwipeFromDOM('.gallery');
-    //     //隐藏loading
-    //     removeLoading();
-    // },200);
 }
 
 
