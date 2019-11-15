@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ZIMG TEST</title>
+    <style>
+        *{
+            font-family: "Arial", "Microsoft YaHei", sans-serif;
+        }
+        #show{
+            margin:0 auto;
+            width:300px;
+            border-color:black;
+        }
+        .center{
+            margin:0 auto;
+            margin-top:200px;
+            width:300px;
+            text-align:center;
+        }
+        .hidden{
+            display:none;
+        }
+        .btn{
+            margin-bottom:10px;
+            width:147px;
+            height:30px;
+            line-height:30px;
+            text-align:center;
+            color:white;
+            background:grey;
+            border:none;
+            cursor:pointer;
+            outline:none;
+        }
+        .blue{
+            background:#6fc6ff;
+        }
+        .green{
+            background:#6fcf6f;
+        }
+    </style>
+</head>
+<body>
+<div class="center">
+    <h2>ZIMG TEST</h2>
+    <input type="file" id="upfile" name="userfile" class="hidden">
+    <button id="choose" class="btn blue">选择图片</button>
+    <button id="upload" class="btn green">上传</button>
+    <img id="show">
+    <a id="md5-img" target="_blank">
+   	 <div id="md5"></div>
+    </a>
+</div>
+</body>
+<script type="text/javascript">
+
+    //点击绑定
+    document.getElementById('choose').onclick = function(){
+        document.getElementById('upfile').click();
+    }
+
+    //原生JS版ajax文件上传（和zimg交互）
+    document.getElementById("upload").onclick = function() {
+        //文件ID
+        var fileId = "upfile";
+        //上传地址
+        var url = "http://img.cwebe.com/upload";
+        //创建ajax对象
+        var ajax = new XMLHttpRequest();
+        //创建FormData（表单数据类）
+        var fd = new FormData();
+        //把文件添加到表单里
+        fd.append("userfile", document.getElementById(fileId).files[0]);
+        //创建请求
+        ajax.open("post", url, true);
+        //发送请求
+        ajax.send(fd);
+        //请求成功回调（ajax.readyState == 4 && ajax.status == 200）
+        ajax.onload = function () {
+            console.log(ajax.readyState);
+            console.log(ajax.status);
+            var data = JSON.parse(ajax.responseText);
+            if(data.ret == true){
+                var info = data.info;
+    　          console.log(info.md5);
+		document.getElementById('md5-img').href = 'http://img.cwebe.com/img/' + info.md5;
+                document.getElementById('md5').innerText = info.md5;
+                alert('上传成功');
+                //document.getElementById('show').src = 'http://img.cwebe.com/img/' + info.md5 + '?w=200&h=200';
+            }else{
+                alert('上传失败');
+            }
+        };
+        //注册事件 onreadystatechange 状态改变就会调用
+        /* ajax.onreadystatechange = function () {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var data = JSON.parse(ajax.responseText);
+            if(data.ret == true){
+                var info = data.info;
+            }
+    　　	}
+        } */
+    }
+
+    //原生JS版上传图片预览
+    document.getElementById('upfile').onchange = function(){
+        //创建FileReader
+        var re = new FileReader();
+        //读取文件
+        re.readAsDataURL(this.files[0]);
+        //读取完成后显示BASE64
+        re.onload = function(){
+            document.getElementById('show').src = re.result;
+            document.getElementById('md5').innerText = '';
+        }
+    }
+
+</script>
+</html>
