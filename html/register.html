@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>注册</title>
+    <link rel="stylesheet" href="/icon/iconfont_01/iconfont.css">
     <style>
         *{
             margin: 0;
             padding: 0;
+            transition: all ease 0.5s;
+            -moz-transition: all ease 0.5s; /* Firefox 4 */
+            -webkit-transition: all ease 0.5s; /* Safari 和 Chrome */
+            -o-transition: all ease 0.5s; /* Opera */
         }
         body{
             position: absolute;
@@ -25,8 +30,8 @@
             background-image: url(/images/bg1.jpg);
         }
         #main{
-            width: 420px;
-            height: 350px;
+            width: 430px;
+            height: 520px;
             position: absolute;
             top: 0px;
             left: 0px;
@@ -43,6 +48,21 @@
             background-color:  rgba(255,255,255,0.6);
             /* box-shadow: 0 1px 3px rgba(0,0,0,0.2); */
         }
+        .title{
+            margin-top: 30px;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            font-size: x-large;
+            margin-left: auto;
+            margin-right: auto;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
         .input{
             display: block;
             margin-left: auto;
@@ -54,17 +74,32 @@
             -moz-box-sizing: border-box;
             outline:none;
             background-color: rgba(255,255,255,0.8);
+            border: solid 1px rgba(255,255,255,0.8);
             /* border: 1px #d9d9d9 solid; */
         }
-        .email{
-            margin-top: 50px;
+        .nick-name{
+            margin-top: 30px;
             padding-left: 10px;
             width: 300px;
             height: 50px;
             line-height: 50px;
         }
-        .login-register{
-            margin-top: 50px;
+        .email{
+            margin-top: 30px;
+            padding-left: 10px;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+        }
+        .password{
+            margin-top: 30px;
+            padding-left: 10px;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+        }
+        .code-wrap{
+            margin-top: 30px;
             width: 300px;
             height: 50px;
             margin-left: auto;
@@ -86,9 +121,13 @@
             line-height: 50px;
             background-color: #4CAF50;
             color: white;
+            cursor: pointer;
+            font-size: x-small;
+            border: none;
+            /* background: -webkit-linear-gradient(left, #554edccc, #c440eecc); */
         }
         .register{
-            margin-top: 50px;
+            margin-top: 30px;
             padding: 0;
             width: 300px;
             height: 50px;
@@ -97,18 +136,79 @@
             border: none;
             color: #ffffff;
             cursor: pointer;
+            border: none;
+            /* background-image: -webkit-linear-gradient(left,  #005df7cc, #ff007ecc); */
+        }
+        .nick-name-icon{
+            position: absolute;
+            top: 122px;
+            right: 78px;
+            font-size: 25px;
+            color: #757575;
+            cursor: text;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        .email-icon{
+            position: absolute;
+            top: 202px;
+            right: 78px;
+            font-size: 25px;
+            color: #757575;
+            cursor: text;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        .password-icon{
+            position: absolute;
+            top: 282px;
+            right: 78px;
+            font-size: 25px;
+            color: #757575;
+            cursor: text;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        input[type=text]:focus{ 
+            border-color: #4CAF50;
+        }
+        input[type=email]:focus{ 
+            border-color: #4CAF50;
+        }
+        input[type=password]:focus{ 
+            border-color: #4CAF50;
         }
     </style>
     
 </head>
 <body>
     <div id="main">
-        <input type="email" class="input email" placeholder="请输入邮箱">
-        <div class="login-register">
-            <input type="text" class="input code" placeholder="请输入注册码">
-            <input type="button" class="input send" value="发送">
+        <div class="title">欢迎注册</div>
+        <input type="text" class="input nick-name" id="nick_name" placeholder="请输入用户名"><span class="iconfont nick-name-icon">&#xe613;</span>
+        <input type="email" class="input email" placeholder="请输入邮箱"><span class="iconfont email-icon">&#xe632;</span>
+        <input type="password" class="input password" placeholder="请输入密码"><span class="iconfont password-icon">&#xe62e;</span>
+        <div class="code-wrap">
+            <input type="text" class="input code" placeholder="请输入验证码">
+            <input type="button" class="input send" value="发送验证码">
         </div>
         <input type="button" class="input register" value="注册">
     </div>
 </body>
-</html>
+<script src="/js/config.js"></script>
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script>
+    
+</script>
+</html> 

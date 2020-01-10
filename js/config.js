@@ -1,0 +1,1 @@
+var basicUrl = 'http://cwebe.com';
