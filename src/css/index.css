@@ -13,11 +13,11 @@
 }
 @font-face {
     font-family: "ALIPUHUI-R";
-    src: url(/fonts/Alibaba-PuHuiTi-Regular.ttf);
+    src: url(/src/fonts/Alibaba-PuHuiTi-Regular.ttf);
 }
 @font-face {
     font-family: "SHS-L";
-    src: url(/fonts/SourceHanSansCN-Light.otf);
+    src: url(/src/fonts/SourceHanSansCN-Light.otf);
 }
 body{
     margin:0;
@@ -88,7 +88,7 @@ header nav{
     /* background-repeat: no-repeat; */
     /* background-position-x: center;
     background-position-y: center; */
-    background-image: url(/images/bg3.jpg);
+    background-image: url(/src/images/bg3.jpg);
     /* background-image:url(/images/tokyo.jpg); */
     /* background-color:#f9f9f9; */
 }
